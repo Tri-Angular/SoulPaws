@@ -2,16 +2,26 @@ package com.example.soulpaws.model;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDateTime;
+
 @Entity
 public class User {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String username;
-    private String password;
-    private String email;
 
-    // getters and setters
+    private String name;
+    private int age;
+    private String email;
+    private String password;
+    private String province;
+    @Enumerated(EnumType.STRING)
+    private Role role = Role.USER;
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
+
+// getters and setters
     public Long getId() {
         return id;
     }
@@ -20,12 +30,28 @@ public class User {
         this.id = id;
     }
 
-    public String getUsername() {
-        return username;
+    public String getName() {
+        return name;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {
@@ -36,12 +62,45 @@ public class User {
         this.password = password;
     }
 
-    public String getEmail() {
-        return email;
+    public String getProvince() {
+        return province;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setProvince(String province) {
+        this.province = province;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+    public String getUsername() {
+        return this.name;
+    }
+
+
+    public enum Role {
+        ADMIN, USER
     }
 
 }
