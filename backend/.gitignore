@@ -1,0 +1,45 @@
+# Ignorar archivo específico en raíz
+HELP.md
+
+# Ignorar directorio target completamente, pero permitir maven-wrapper.jar dentro de .mvn/wrapper/
+target/
+!.mvn/wrapper/maven-wrapper.jar
+
+# Permitir directorios target dentro de src/main y src/test
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+# Excluir archivos específicos y directorios completos dentro de src/main/java/com/example/soulpaws/
+**/src/main/resources/application.properties
+**/src/main/java/com/example/soulpaws/config/
+**/src/main/java/com/example/soulpaws/security/
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+# Ignorar directorio build en todos los lugares excepto en src/main y src/test
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### VS Code ###
+.vscode/
