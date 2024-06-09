@@ -13,6 +13,7 @@ public class AdoptionRequestService {
     @Autowired
     private AdoptionRequestRepository adoptionRequestRepository;
 
+    // Métodos CRUD y cualquier otra lógica de negocio necesaria
     public List<AdoptionRequest> getAllAdoptionRequests() {
         return adoptionRequestRepository.findAll();
     }

@@ -13,6 +13,7 @@ public class PetProfileService {
     @Autowired
     private PetProfileRepository petProfileRepository;
 
+    // Métodos CRUD y cualquier otra lógica de negocio necesaria
     public List<PetProfile> getAllPetProfiles() {
         return petProfileRepository.findAll();
     }
