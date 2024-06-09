@@ -3,10 +3,10 @@ package com.example.soulpaws.model;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
-public class Adoption {
-
+public class AdoptionRequest {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -15,7 +15,16 @@ public class Adoption {
     @JoinColumn(name = "user_id")
     private User user;
 
-    // getters and setters
+    @ManyToOne
+    @JoinColumn(name = "pet_profile_id")
+    private PetProfile petProfile;
+
+    @Enumerated(EnumType.STRING)
+    private Status status = Status.PENDING;
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
+
+// getters and setters
     public Long getId() {
         return id;
     }
@@ -32,25 +41,39 @@ public class Adoption {
         this.user = user;
     }
 
-    public Pet getPet() {
-        return pet;
+    public PetProfile getPetProfile() {
+        return petProfile;
     }
 
-    public void setPet(Pet pet) {
-        this.pet = pet;
+    public void setPetProfile(PetProfile petProfile) {
+        this.petProfile = petProfile;
     }
 
-    public LocalDate getAdoptionDate() {
-        return adoptionDate;
+    public Status getStatus() {
+        return status;
     }
 
-    public void setAdoptionDate(LocalDate adoptionDate) {
-        this.adoptionDate = adoptionDate;
+    public void setStatus(Status status) {
+        this.status = status;
     }
 
-    @ManyToOne
-    @JoinColumn(name = "pet_id")
-    private Pet pet;
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
 
-    private LocalDate adoptionDate;
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+    public enum Status {
+        PENDING, APPROVED, REJECTED
+    }
 }

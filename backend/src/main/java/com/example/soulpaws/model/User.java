@@ -98,6 +98,9 @@ public class User {
         return this.name;
     }
 
+    public void setUsername(String username) {
+    }
+
 
     public enum Role {
         ADMIN, USER
