@@ -1,36 +1,31 @@
-package com.example.soulpaws.controller;
+package com.example.soulpaws.service;
 
 import com.example.soulpaws.model.Shelter;
 import com.example.soulpaws.repository.ShelterRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@RestController
-@RequestMapping("/shelters")
-public class ShelterController {
+@Service
+public class ShelterService {
 
     @Autowired
     private ShelterRepository shelterRepository;
 
-    @GetMapping
     public List<Shelter> getAllShelters() {
         return shelterRepository.findAll();
     }
 
-    @PostMapping
-    public Shelter createShelter(@RequestBody Shelter shelter) {
-        return shelterRepository.save(shelter);
-    }
-
-    @GetMapping("/{id}")
-    public Shelter getShelterById(@PathVariable Long id) {
+    public Shelter getShelterById(Long id) {
         return shelterRepository.findById(id).orElse(null);
     }
 
-    @PutMapping("/{id}")
-    public Shelter updateShelter(@PathVariable Long id, @RequestBody Shelter shelterDetails) {
+    public Shelter createShelter(Shelter shelter) {
+        return shelterRepository.save(shelter);
+    }
+
+    public Shelter updateShelter(Long id, Shelter shelterDetails) {
         Shelter shelter = shelterRepository.findById(id).orElse(null);
         if (shelter != null) {
             shelter.setName(shelterDetails.getName());
@@ -41,8 +36,7 @@ public class ShelterController {
         return null;
     }
 
-    @DeleteMapping("/{id}")
-    public void deleteShelter(@PathVariable Long id) {
+    public void deleteShelter(Long id) {
         shelterRepository.deleteById(id);
     }
 }

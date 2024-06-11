@@ -1,36 +1,31 @@
-package com.example.soulpaws.controller;
+package com.example.soulpaws.service;
 
 import com.example.soulpaws.model.Pet;
 import com.example.soulpaws.repository.PetRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@RestController
-@RequestMapping("/pets")
-public class PetController {
+@Service
+public class PetService {
 
     @Autowired
     private PetRepository petRepository;
 
-    @GetMapping
     public List<Pet> getAllPets() {
         return petRepository.findAll();
     }
 
-    @PostMapping
-    public Pet createPet(@RequestBody Pet pet) {
-        return petRepository.save(pet);
-    }
-
-    @GetMapping("/{id}")
-    public Pet getPetById(@PathVariable Long id) {
+    public Pet getPetById(Long id) {
         return petRepository.findById(id).orElse(null);
     }
 
-    @PutMapping("/{id}")
-    public Pet updatePet(@PathVariable Long id, @RequestBody Pet petDetails) {
+    public Pet createPet(Pet pet) {
+        return petRepository.save(pet);
+    }
+
+    public Pet updatePet(Long id, Pet petDetails) {
         Pet pet = petRepository.findById(id).orElse(null);
         if (pet != null) {
             pet.setName(petDetails.getName());
@@ -41,8 +36,7 @@ public class PetController {
         return null;
     }
 
-    @DeleteMapping("/{id}")
-    public void deletePet(@PathVariable Long id) {
+    public void deletePet(Long id) {
         petRepository.deleteById(id);
     }
 }
