@@ -1,4 +1,4 @@
-package com.example.soulpaws.controller;
+package com.soulpaws.controller;
 
 import com.example.soulpaws.model.AdoptionRequest;
 import com.example.soulpaws.repository.AdoptionRequestRepository;

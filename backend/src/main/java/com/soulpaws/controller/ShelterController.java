@@ -1,4 +1,4 @@
-package com.example.soulpaws.controller;
+package com.soulpaws.controller;
 
 import com.example.soulpaws.model.Shelter;
 import com.example.soulpaws.service.ShelterService;

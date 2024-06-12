@@ -1,4 +1,4 @@
-package com.example.soulpaws.controller;
+package com.soulpaws.controller;
 
 /*import com.example.soulpaws.security.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;

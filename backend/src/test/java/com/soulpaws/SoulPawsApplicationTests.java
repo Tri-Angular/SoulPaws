@@ -1,4 +1,4 @@
-package com.example.soulpaws;
+package com.soulpaws;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

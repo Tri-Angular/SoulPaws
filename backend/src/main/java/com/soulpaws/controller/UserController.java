@@ -1,4 +1,4 @@
-package com.example.soulpaws.controller;
+package com.soulpaws.controller;
 
 import com.example.soulpaws.model.User;
 import com.example.soulpaws.service.UserService;
