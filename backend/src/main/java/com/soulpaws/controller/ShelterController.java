@@ -1,7 +1,7 @@
-package com.example.soulpaws.controller;
+package com.soulpaws.controller;
 
-import com.example.soulpaws.model.Shelter;
-import com.example.soulpaws.service.ShelterService;
+import com.soulpaws.model.Shelter;
+import com.soulpaws.service.ShelterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

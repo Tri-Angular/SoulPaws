@@ -1,7 +1,7 @@
-package com.example.soulpaws.service;
+package com.soulpaws.service;
 
-import com.example.soulpaws.model.Shelter;
-import com.example.soulpaws.repository.ShelterRepository;
+import com.soulpaws.model.Shelter;
+import com.soulpaws.repository.ShelterRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

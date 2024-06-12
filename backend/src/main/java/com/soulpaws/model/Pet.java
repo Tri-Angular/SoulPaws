@@ -1,4 +1,4 @@
-package com.example.soulpaws.model;
+package com.soulpaws.model;
 
 import jakarta.persistence.*;
 import java.time.LocalDateTime;

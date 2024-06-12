@@ -1,7 +1,7 @@
-package com.example.soulpaws.service;
+package com.soulpaws.service;
 
-import com.example.soulpaws.model.User;
-import com.example.soulpaws.repository.UserRepository;
+import com.soulpaws.model.User;
+import com.soulpaws.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
