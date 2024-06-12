@@ -1,7 +1,7 @@
 package com.soulpaws.controller;
 
-import com.example.soulpaws.model.AdoptionRequest;
-import com.example.soulpaws.repository.AdoptionRequestRepository;
+import com.soulpaws.model.AdoptionRequest;
+import com.soulpaws.repository.AdoptionRequestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

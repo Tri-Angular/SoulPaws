@@ -1,7 +1,7 @@
 package com.soulpaws.controller;
 
-import com.example.soulpaws.model.PetProfile;
-import com.example.soulpaws.service.PetProfileService;
+import com.soulpaws.model.PetProfile;
+import com.soulpaws.service.PetProfileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

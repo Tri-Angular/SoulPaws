@@ -1,7 +1,7 @@
 package com.soulpaws.controller;
 
-import com.example.soulpaws.model.User;
-import com.example.soulpaws.service.UserService;
+import com.soulpaws.model.User;
+import com.soulpaws.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

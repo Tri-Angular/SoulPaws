@@ -7,7 +7,7 @@
 		<version>3.3.0</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.example</groupId>
+	<groupId>com.soulpaws</groupId>
 	<artifactId>mascotas</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>SoulPaws</name>
@@ -72,6 +72,9 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<mainClass>com.soulpaws.SoulPawsApplication</mainClass>
+				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
