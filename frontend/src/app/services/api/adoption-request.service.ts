@@ -37,4 +37,8 @@ export class AdoptionRequestService {
   rejectRequest(id: number): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/${id}/reject`, {});
   }
+
+  pendingRequest(id: number): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/${id}/pending`, {});
+  }
 }
