@@ -33,4 +33,8 @@ export class PetService {
   searchPets(criteria: any): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/search`, criteria);    
   }
+  initiateAdoption(petId: number): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/${petId}/initiate-adoption`, {});
+  }
+  
   }
