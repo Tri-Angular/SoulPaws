@@ -1,0 +1,18 @@
+<div class="pet-add">
+    <h2>Agregar Nueva Mascota</h2>
+    <form (ngSubmit)="onSubmit()">
+      <label for="name">Nombre:</label>
+      <input id="name" [(ngModel)]="pet.name" name="name" required>
+  
+      <label for="breed">Raza:</label>
+      <input id="breed" [(ngModel)]="pet.breed" name="breed" required>
+  
+      <label for="age">Edad:</label>
+      <input id="age" [(ngModel)]="pet.age" name="age" required>
+  
+      <label for="description">Descripción:</label>
+      <textarea id="description" [(ngModel)]="pet.description" name="description"></textarea>
+  
+      <button type="submit">Agregar Mascota</button>
+    </form>
+  </div>

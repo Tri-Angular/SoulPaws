@@ -1,0 +1,9 @@
+<div class="pet-detail">
+    <h2>Detalle de Mascota</h2>
+    <div *ngIf="pet">
+      <h3>{{ pet.name }}</h3>
+      <p>Raza: {{ pet.breed }}</p>
+      <p>Edad: {{ pet.age }}</p>
+      <p>Descripción: {{ pet.description }}</p>
+    </div>
+  </div>
