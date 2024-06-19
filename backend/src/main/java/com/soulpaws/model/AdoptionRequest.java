@@ -6,9 +6,11 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
+@Table(name = "adoption_request")
 public class AdoptionRequest {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
 
     @ManyToOne
@@ -20,8 +22,13 @@ public class AdoptionRequest {
     private PetProfile petProfile;
 
     @Enumerated(EnumType.STRING)
+    @Column(name = "status")
     private Status status = Status.PENDING;
+
+    @Column(name = "created_at")
     private LocalDateTime createdAt;
+
+    @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
 // getters and setters
