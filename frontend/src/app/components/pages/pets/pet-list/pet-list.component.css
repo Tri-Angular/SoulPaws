@@ -1,0 +1,20 @@
+.pet-list {
+    padding: 20px;
+  }
+  
+  .pet-list h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .pet-list ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .pet-list li {
+    background-color: #f9f9f9;
+    margin-bottom: 5px;
+    padding: 10px;
+    border: 1px solid #ddd;
+  }

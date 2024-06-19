@@ -1,0 +1,32 @@
+<div class="pet-edit">
+    <h2>Editar Mascota</h2>
+    
+    <form (ngSubmit)="updatePet()">
+      <label for="name">Nombre:</label>
+      <input type="text" id="name" name="name" [(ngModel)]="pet.name" required>
+      
+      <label for="age">Edad:</label>
+      <input type="number" id="age" name="age" [(ngModel)]="pet.age" required>
+      
+      <label for="size">Tamaño:</label>
+      <input type="text" id="size" name="size" [(ngModel)]="pet.size" required>
+      
+      <label for="gender">Género:</label>
+      <select id="gender" name="gender" [(ngModel)]="pet.gender" required>
+        <option value="MALE">Masculino</option>
+        <option value="FEMALE">Femenino</option>
+      </select>
+      
+      <label for="breed">Raza:</label>
+      <input type="text" id="breed" name="breed" [(ngModel)]="pet.breed" required>
+      
+      <label for="image">URL de la imagen:</label>
+      <input type="text" id="image" name="image" [(ngModel)]="pet.image" required>
+      
+      <label for="description">Descripción:</label>
+      <textarea id="description" name="description" [(ngModel)]="pet.description" required></textarea>
+      
+      <button type="submit">Guardar Cambios</button>
+    </form>
+  </div>
+  
