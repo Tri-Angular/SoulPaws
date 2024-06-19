@@ -1,0 +1,31 @@
+.user-edit {
+    padding: 20px;
+  }
+  
+  .user-edit h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .user-edit form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .user-edit label {
+    margin-top: 10px;
+  }
+  
+  .user-edit input {
+    margin-top: 5px;
+  }
+  
+  .user-edit button {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  

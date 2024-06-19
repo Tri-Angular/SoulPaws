@@ -1,0 +1,17 @@
+.pet-detail {
+    padding: 20px;
+  }
+  
+  .pet-detail h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .pet-detail h3 {
+    font-size: 20px;
+    margin-bottom: 5px;
+  }
+  
+  .pet-detail p {
+    margin: 5px 0;
+  }
