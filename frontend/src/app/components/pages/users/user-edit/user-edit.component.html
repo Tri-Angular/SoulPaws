@@ -1,0 +1,13 @@
+<div class="user-edit">
+    <h2>Editar Usuario</h2>
+    <form (ngSubmit)="onSubmit()">
+      <label for="username">Nombre de usuario:</label>
+      <input id="username" [(ngModel)]="user.username" name="username" required>
+  
+      <label for="email">Correo electrónico:</label>
+      <input id="email" [(ngModel)]="user.email" name="email" required>
+  
+      <button type="submit">Guardar Cambios</button>
+    </form>
+  </div>
+  
