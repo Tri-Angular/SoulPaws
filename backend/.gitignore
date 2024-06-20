@@ -11,8 +11,8 @@ target/
 
 # Excluir archivos específicos y directorios completos dentro de src/main/java/com/example/soulpaws/
 **/src/main/resources/application.properties
-**/src/main/java/com/soulpaws/config/
-**/src/main/java/com/soulpaws/security/
+!**/src/main/java/com/soulpaws/config/
+!**/src/main/java/com/soulpaws/security/
 
 ### STS ###
 .apt_generated
