@@ -10,36 +10,26 @@ public class Pet {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
-
     @Column(name = "name")
     private String name;
-
     @Column(name = "age")
     private int age;
-
     @ManyToOne
     @JoinColumn(name = "shelter_id")
     private Shelter shelter;
-
     @Column(name = "size")
     private String size;
-
     @Enumerated(EnumType.STRING)
     @Column(name = "gender")
     private Gender gender;
-
     @Column(name = "breed")
     private String breed;
-
     @Column(name = "image")
     private String image;
-
     @Column(name = "description")
     private String description;
-
     @Column(name = "created_at")
     private LocalDateTime createdAt;
-
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 

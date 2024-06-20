@@ -12,22 +12,17 @@ public class AdoptionRequest {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
-
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
-
     @ManyToOne
     @JoinColumn(name = "pet_profile_id")
     private PetProfile petProfile;
-
     @Enumerated(EnumType.STRING)
     @Column(name = "status")
     private Status status = Status.PENDING;
-
     @Column(name = "created_at")
     private LocalDateTime createdAt;
-
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 

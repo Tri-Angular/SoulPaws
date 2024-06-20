@@ -18,14 +18,11 @@ public class PetProfile {
 
     @Column(name = "unique_features")
     private String uniqueFeatures;
-
     @Enumerated(EnumType.STRING)
     @Column(name = "availability_status")
     private AvailabilityStatus availabilityStatus = AvailabilityStatus.AVAILABLE_FOR_ADOPTION;
-
     @Column(name = "created_at")
     private LocalDateTime createdAt;
-
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
