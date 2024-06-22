@@ -1,18 +1,18 @@
 CREATE SCHEMA IF NOT EXISTS soulpaws;
 
-CREATE TABLE soulpaws.users (
+CREATE TABLE IF NOT EXISTS soulpaws.users (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(100) NOT NULL,
-	age INT,
+    name VARCHAR(255) NULL,
+    age INT,
     email VARCHAR(100) NOT NULL UNIQUE,
-    password VARCHAR(255) NOT NULL,
-    province VARCHAR(100),
-    role ENUM('Admin', 'User') NOT NULL DEFAULT 'User',
+    password VARCHAR(255) NULL,
+    province VARCHAR(255),
+    role ENUM('ADMIN', 'USER') NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
-CREATE TABLE soulpaws.shelters (
+CREATE TABLE IF NOT EXISTS soulpaws.shelters (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
     phone VARCHAR(20),
@@ -25,7 +25,7 @@ CREATE TABLE soulpaws.shelters (
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
-CREATE TABLE soulpaws.pets (
+CREATE TABLE IF NOT EXISTS soulpaws.pets (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
     age INT,
@@ -40,7 +40,7 @@ CREATE TABLE soulpaws.pets (
     FOREIGN KEY (shelter_id) REFERENCES soulpaws.shelters(id)
 );
 
-CREATE TABLE soulpaws.pet_profiles (
+CREATE TABLE IF NOT EXISTS soulpaws.pet_profiles (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
     pet_id BIGINT,
     unique_features TEXT,
@@ -50,7 +50,7 @@ CREATE TABLE soulpaws.pet_profiles (
     FOREIGN KEY (pet_id) REFERENCES soulpaws.pets(id)
 );
 
-CREATE TABLE soulpaws.adoption_requests (
+CREATE TABLE IF NOT EXISTS soulpaws.adoption_requests (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
     user_id BIGINT,
     pet_profile_id BIGINT,

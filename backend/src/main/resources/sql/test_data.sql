@@ -1,62 +1,25 @@
-CREATE SCHEMA IF NOT EXISTS soulpaws;
+INSERT INTO soulpaws.users (name, age, email, password, province, role)
+VALUES
+('Alice Admin', 35, 'alice.admin@example.com', 'hashedpassword1', 'Ontario', 'ADMIN'),
+('Bob User', 28, 'bob.user@example.com', 'hashedpassword2', 'Quebec', 'USER'),
+('Charlie User', 30, 'charlie.user@example.com', 'hashedpassword3', 'British Columbia', 'USER');
 
-CREATE TABLE soulpaws.users (
-    id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(100) NOT NULL,
-	age INT,
-    email VARCHAR(100) NOT NULL UNIQUE,
-    password VARCHAR(255) NOT NULL,
-    province VARCHAR(100),
-    role ENUM('Admin', 'User') NOT NULL DEFAULT 'User',
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-);
+INSERT INTO soulpaws.shelters (name, phone, email, address, province, postal_code, description)
+VALUES
+('Happy Paws Shelter', '123-456-7890', 'contact@happypaws.com', '1234 Elm St, Toronto', 'Ontario', 'M4B1B3', 'A welcoming place for pets in need.'),
+('Safe Haven Shelter', '234-567-8901', 'info@safehaven.com', '5678 Oak St, Montreal', 'Quebec', 'H1A2B3', 'Providing shelter and care for homeless pets.');
 
-CREATE TABLE soulpaws.shelters (
-    id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(100) NOT NULL,
-    phone VARCHAR(20),
-    email VARCHAR(100) NOT NULL,
-    address VARCHAR(255),
-    province VARCHAR(100),
-    postal_code VARCHAR(10),
-    description TEXT,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-);
+INSERT INTO soulpaws.pets (name, age, shelter_id, size, gender, breed, image, description)
+VALUES
+('Buddy', 3, 1, 'Medium', 'MALE', 'Labrador Retriever', 'image_url_1', 'Friendly and playful.'),
+('Misty', 2, 2, 'Small', 'FEMALE', 'Beagle', 'image_url_2', 'Loves to cuddle and play.');
 
-CREATE TABLE soulpaws.pets (
-    id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(100) NOT NULL,
-    age INT,
-    shelter_id BIGINT,
-    size VARCHAR(20),
-    gender ENUM('MALE', 'FEMALE') NOT NULL,
-    breed VARCHAR(100),
-    image TEXT,
-    description TEXT,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    FOREIGN KEY (shelter_id) REFERENCES soulpaws.shelters(id)
-);
+INSERT INTO soulpaws.pet_profiles (pet_id, unique_features, availability_status)
+VALUES
+(1, 'Golden fur with a white spot on the chest', 'AVAILABLE_FOR_ADOPTION'),
+(2, 'Brown and white coat, very energetic', 'AVAILABLE_FOR_ADOPTION');
 
-CREATE TABLE soulpaws.pet_profiles (
-    id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    pet_id BIGINT,
-    unique_features TEXT,
-    availability_status ENUM('AVAILABLE_FOR_ADOPTION', 'IN_ADOPTION_PROCESS', 'ADOPTED') NOT NULL DEFAULT 'AVAILABLE_FOR_ADOPTION',
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    FOREIGN KEY (pet_id) REFERENCES soulpaws.pets(id)
-);
-
-CREATE TABLE soulpaws.adoption_requests (
-    id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    user_id BIGINT,
-    pet_profile_id BIGINT,
-    status ENUM('Pending', 'Approved', 'Rejected') NOT NULL DEFAULT 'Pending',
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    FOREIGN KEY (user_id) REFERENCES soulpaws.users(id),
-    FOREIGN KEY (pet_profile_id) REFERENCES soulpaws.pet_profiles(id)
-);
+INSERT INTO soulpaws.adoption_requests (user_id, pet_profile_id, status)
+VALUES
+(2, 1, 'Pending'),
+(3, 2, 'Pending');
