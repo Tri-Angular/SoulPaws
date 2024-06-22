@@ -1,12 +1,23 @@
 package com.soulpaws.model;
 
 import jakarta.persistence.*;
+import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
-import java.time.LocalDateTime;
+import java.util.Collection;
+import java.util.Date;
+import java.util.List;
 
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
-@Table(name = "user")
-public class User {
+@Table(name = "users")
+public class User implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,102 +27,73 @@ public class User {
     private String name;
     @Column(name = "age")
     private int age;
-    @Column(name = "email")
+    @Column(name = "email",unique = true, length = 100, nullable = false)
     private String email;
     @Column(name = "password")
     private String password;
     @Column(name = "province")
     private String province;
     @Enumerated(EnumType.STRING)
-    private Role role = Role.USER;
-    @Column(name = "createdAt")
-    private LocalDateTime createdAt;
-    @Column(name = "updatedAt")
-    private LocalDateTime updatedAt;
+    private Role role;
+    @CreationTimestamp
+    @Column(updatable = false, name = "created_at")
+    private Date createdAt;
+    @UpdateTimestamp
+    @Column(name = "updated_at")
+    private Date updatedAt;
 
-// getters and setters
-    public Long getId() {
-        return id;
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return List.of();
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
+    @Override
     public String getPassword() {
         return password;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    @Override
+    public String getUsername() { return email;}
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
     }
 
-    public String getProvince() {
-        return province;
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
     }
 
-    public void setProvince(String province) {
-        this.province = province;
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
     }
 
-    public Role getRole() {
-        return role;
-    }
-
-    public void setRole(Role role) {
-        this.role = role;
-    }
-
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public LocalDateTime getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(LocalDateTime updatedAt) {
-        this.updatedAt = updatedAt;
-    }
-
-    public String getUsername() {
-        return this.name;
+    @Override
+    public boolean isEnabled() {
+        return true;
     }
 
     public void setUsername(String username) {
     }
 
+    public User setEmail(String email) {
+        this.email = email;
+        return this;
+    }
+
+    public User setName(String name) {
+        this.name = name;
+        return this;
+    }
+
+    public User setPassword(String password) {
+        this.password = password;
+        return this;
+    }
 
     public enum Role {
         ADMIN, USER
     }
-
 }
