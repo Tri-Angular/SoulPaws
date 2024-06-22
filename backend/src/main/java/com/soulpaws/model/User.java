@@ -93,6 +93,13 @@ public class User implements UserDetails {
         return this;
     }
 
+    // Set default role to USER
+    @PrePersist
+    private void setDefaultRole() {
+        if (role == null) {
+            role = Role.USER;
+        }
+    }
     public enum Role {
         ADMIN, USER
     }
