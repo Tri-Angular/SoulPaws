@@ -1,51 +1,62 @@
--- 18/06/24
--- Usuarios
-INSERT INTO user (name, age, email, password, province, role, created_at, updated_at)
-VALUES
-    ('Administrador', 35, 'admin@example.com', 'admin123', 'Granada', 'ADMIN', NOW(), NOW()),
-    ('Usuario Común', 28, 'usuario@example.com', 'user123', 'Sevilla', 'USER', NOW(), NOW());
+CREATE SCHEMA IF NOT EXISTS soulpaws;
 
--- Refugios
-INSERT INTO shelter (name, phone, email, address, province, postal_code, description, created_at, updated_at)
-VALUES
-    ('Refugio Canino Amigos Peludos', '123456789', 'refugio.amigospeludos@example.com', 'Calle de los Perros, 123', 'Madrid', '28001', 'Refugio para perros abandonados', NOW(), NOW()),
-    ('Asociación Felina Miau', '987654321', 'asociacion.miau@example.com', 'Avenida de los Gatos, 456', 'Barcelona', '08001', 'Asociación para gatos callejeros', NOW(), NOW());
+CREATE TABLE soulpaws.users (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+	age INT,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    province VARCHAR(100),
+    role ENUM('Admin', 'User') NOT NULL DEFAULT 'User',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
 
--- Mascotas
-INSERT INTO pet (name, age, shelter_id, size, gender, breed, image, description, created_at, updated_at)
-VALUES
-    ('Rex', 3, 1, 'Grande', 'MALE', 'Labrador Retriever', 'rex.jpg', 'Rex es un Labrador muy juguetón y cariñoso.', NOW(), NOW()),
-    ('Luna', 2, 2, 'Mediana', 'FEMALE', 'Siamesa', 'luna.jpg', 'Luna es una gata tranquila y sociable.', NOW(), NOW()),
-    ('Bobby', 4, 1, 'Pequeño', 'MALE', 'Yorkshire Terrier', 'bobby.jpg', 'Bobby es un perro pequeño y muy activo.', NOW(), NOW()),
-    ('Pelusa', 5, 2, 'Mediana', 'FEMALE', 'Persa', 'pelusa.jpg', 'Pelusa es una gata persa con pelo largo y suave.', NOW(), NOW());
+CREATE TABLE soulpaws.shelters (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    phone VARCHAR(20),
+    email VARCHAR(100) NOT NULL,
+    address VARCHAR(255),
+    province VARCHAR(100),
+    postal_code VARCHAR(10),
+    description TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
 
--- Perfiles de Mascotas
-INSERT INTO pet_profile (pet_id, unique_features, availability_status, created_at, updated_at)
-VALUES
-    (1, 'Manchas blancas en las patas traseras', 'AVAILABLE_FOR_ADOPTION', NOW(), NOW()),
-    (2, 'Ojos azules', 'IN_ADOPTION_PROCESS', NOW(), NOW()),
-    (3, 'Rabito corto', 'ADOPTED', NOW(), NOW()),
-    (4, 'Pelaje largo y suave', 'AVAILABLE_FOR_ADOPTION', NOW(), NOW()),
-    (1, 'Juega mucho con otros perros', 'IN_ADOPTION_PROCESS', NOW(), NOW()),
-    (3, 'Rescatado de la calle', 'ADOPTED', NOW(), NOW()),
-    (2, 'Le gusta estar en lugares altos', 'AVAILABLE_FOR_ADOPTION', NOW(), NOW()),
-    (4, 'Se lleva bien con otros gatos', 'IN_ADOPTION_PROCESS', NOW(), NOW()),
-    (1, 'Entrenado en obediencia básica', 'ADOPTED', NOW(), NOW()),
-    (2, 'Necesita atención médica regular', 'AVAILABLE_FOR_ADOPTION', NOW(), NOW());
--------------
-select * from user;
+CREATE TABLE soulpaws.pets (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    age INT,
+    shelter_id BIGINT,
+    size VARCHAR(20),
+    gender ENUM('MALE', 'FEMALE') NOT NULL,
+    breed VARCHAR(100),
+    image TEXT,
+    description TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (shelter_id) REFERENCES soulpaws.shelters(id)
+);
 
-select * from pet;
+CREATE TABLE soulpaws.pet_profiles (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    pet_id BIGINT,
+    unique_features TEXT,
+    availability_status ENUM('AVAILABLE_FOR_ADOPTION', 'IN_ADOPTION_PROCESS', 'ADOPTED') NOT NULL DEFAULT 'AVAILABLE_FOR_ADOPTION',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (pet_id) REFERENCES soulpaws.pets(id)
+);
 
-select * from pet_profile;
-
-select * from shelter;
-
-describe  user;
-
-describe shelter;
-
-describe pet;
-
-describe pet_profile;
------------------------
+CREATE TABLE soulpaws.adoption_requests (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    user_id BIGINT,
+    pet_profile_id BIGINT,
+    status ENUM('Pending', 'Approved', 'Rejected') NOT NULL DEFAULT 'Pending',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES soulpaws.users(id),
+    FOREIGN KEY (pet_profile_id) REFERENCES soulpaws.pet_profiles(id)
+);

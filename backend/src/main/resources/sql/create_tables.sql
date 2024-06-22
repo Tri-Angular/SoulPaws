@@ -1,62 +1,62 @@
 CREATE SCHEMA IF NOT EXISTS soulpaws;
 
-CREATE TABLE soulpaws.Users (
-    UserID INT AUTO_INCREMENT PRIMARY KEY,
-    Name VARCHAR(100) NOT NULL,
-    Age INT,
-    Email VARCHAR(100) NOT NULL UNIQUE,
-    Password VARCHAR(255) NOT NULL,
-    Province VARCHAR(100),
-    Role ENUM('Admin', 'User') NOT NULL DEFAULT 'User',
+CREATE TABLE soulpaws.users (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+	age INT,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    province VARCHAR(100),
+    role ENUM('Admin', 'User') NOT NULL DEFAULT 'User',
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
-CREATE TABLE soulpaws.Shelters (
-    ShelterID INT AUTO_INCREMENT PRIMARY KEY,
-    Name VARCHAR(100) NOT NULL,
-    Phone VARCHAR(20),
-    Email VARCHAR(100) NOT NULL,
-    Address VARCHAR(255),
-    Province VARCHAR(100),
-    PostalCode VARCHAR(10),
-    Description TEXT,
+CREATE TABLE soulpaws.shelters (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    phone VARCHAR(20),
+    email VARCHAR(100) NOT NULL,
+    address VARCHAR(255),
+    province VARCHAR(100),
+    postal_code VARCHAR(10),
+    description TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
-CREATE TABLE soulpaws.Pets (
-    PetID INT AUTO_INCREMENT PRIMARY KEY,
-    Name VARCHAR(100) NOT NULL,
-    Age INT,
-    ShelterID INT,
-    Size VARCHAR(20),
-    Gender ENUM('Male', 'Female') NOT NULL,
-    Breed VARCHAR(100),
-    Image TEXT,
-    Description TEXT,
+CREATE TABLE soulpaws.pets (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    age INT,
+    shelter_id BIGINT,
+    size VARCHAR(20),
+    gender ENUM('MALE', 'FEMALE') NOT NULL,
+    breed VARCHAR(100),
+    image TEXT,
+    description TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    FOREIGN KEY (ShelterID) REFERENCES soulpaws.Shelters(ShelterID)
+    FOREIGN KEY (shelter_id) REFERENCES soulpaws.shelters(id)
 );
 
-CREATE TABLE soulpaws.PetProfiles (
-    PetProfileID INT AUTO_INCREMENT PRIMARY KEY,
-    PetID INT,
-    UniqueFeatures TEXT,
-    AvailabilityStatus ENUM('Available for adoption', 'In adoption process', 'Adopted') NOT NULL DEFAULT 'Available for adoption',
+CREATE TABLE soulpaws.pet_profiles (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    pet_id BIGINT,
+    unique_features TEXT,
+    availability_status ENUM('AVAILABLE_FOR_ADOPTION', 'IN_ADOPTION_PROCESS', 'ADOPTED') NOT NULL DEFAULT 'AVAILABLE_FOR_ADOPTION',
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    FOREIGN KEY (PetID) REFERENCES soulpaws.Pets(PetID)
+    FOREIGN KEY (pet_id) REFERENCES soulpaws.pets(id)
 );
 
-CREATE TABLE soulpaws.AdoptionRequests (
-    RequestID INT AUTO_INCREMENT PRIMARY KEY,
-    UserID INT,
-    PetProfileID INT,
-    Status ENUM('Pending', 'Approved', 'Rejected') NOT NULL DEFAULT 'Pending',
+CREATE TABLE soulpaws.adoption_requests (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    user_id BIGINT,
+    pet_profile_id BIGINT,
+    status ENUM('Pending', 'Approved', 'Rejected') NOT NULL DEFAULT 'Pending',
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    FOREIGN KEY (UserID) REFERENCES soulpaws.Users(UserID),
-    FOREIGN KEY (PetProfileID) REFERENCES soulpaws.PetProfiles(PetProfileID)
+    FOREIGN KEY (user_id) REFERENCES soulpaws.users(id),
+    FOREIGN KEY (pet_profile_id) REFERENCES soulpaws.pet_profiles(id)
 );
