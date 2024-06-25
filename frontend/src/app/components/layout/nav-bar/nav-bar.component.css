@@ -1,0 +1,38 @@
+.custom-bg {
+  background-color: #4db8c0 !important;
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.navbar-nav {
+  align-items: center; /* Center items vertically */
+}
+
+.custom-nav-item {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.custom-nav-link {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s;
+  padding: 0 15px;
+  height: 200%;
+}
+
+.custom-nav-link:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+  color: white !important;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
