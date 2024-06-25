@@ -1,20 +1,48 @@
-.pet-list {
-    padding: 20px;
-  }
-  
-  .pet-list h2 {
-    font-size: 24px;
-    margin-bottom: 10px;
-  }
-  
-  .pet-list ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .pet-list li {
-    background-color: #f9f9f9;
-    margin-bottom: 5px;
-    padding: 10px;
-    border: 1px solid #ddd;
-  }
+.card {
+  border-radius: 15px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+}
+
+.card-img-top {
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  height: 200px; 
+  object-fit: cover;
+}
+
+.card-body {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-body .card-title {
+  margin-bottom: 0.5rem;
+}
+
+.card-body .card-text {
+  flex: 1 1 auto;
+}
+
+.card-body .btn {
+  align-self: start;
+}
+
+.btn-adopt {
+  background-color: #ffa600 !important;
+  border-color: #ffa600 !important;
+  color: white !important;
+}
+
+.btn-adopt:hover {
+  background-color: #e59400 !important;
+  border-color: #e59400 !important;
+  color: white !important;
+}
