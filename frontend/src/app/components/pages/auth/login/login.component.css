@@ -1,0 +1,21 @@
+.container {
+    margin-top: 50px;
+  }
+  
+  .card {
+    border-radius: 10px;
+  }
+  
+  .card-header {
+    background-color: #4db8c0;
+    color: white;
+  }
+  
+  .btn-primary {
+    background-color: #4db8c0;
+    border: none;
+  }
+  
+  .btn-primary:hover {
+    background-color: #3a9fa8;
+  }
