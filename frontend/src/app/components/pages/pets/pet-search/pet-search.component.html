@@ -1,9 +1,4 @@
-<div class="pet-search">
-    <h2>Buscar Mascota</h2>
-    <input [(ngModel)]="searchTerm" (input)="onSearch()" placeholder="Buscar por nombre...">
-    <ul>
-      <li *ngFor="let pet of filteredPets">
-        {{ pet.name }} - {{ pet.breed }}
-      </li>
-    </ul>
-  </div>
+<form class="form-inline my-2 my-lg-0" (ngSubmit)="search()">
+    <input class="form-control mr-sm-2" type="search" placeholder="Search pets" aria-label="Search" [(ngModel)]="searchQuery" name="search">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+  </form>

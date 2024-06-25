@@ -1,21 +1,19 @@
 import { Component } from '@angular/core';
-import { PetService } from '../../../../services/api/pet.service';
-import { Pet } from '../../../../models/pet.model';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-pet-search',
+  standalone: true,
+  imports: [CommonModule, FormsModule],
   templateUrl: './pet-search.component.html',
   styleUrls: ['./pet-search.component.css']
 })
 export class PetSearchComponent {
-  searchTerm: string = '';
-  filteredPets: Pet[] = [];
+  searchQuery: string = '';
 
-  constructor(private petService: PetService) {}
-
-  onSearch(): void {
-    this.petService.searchPets(this.searchTerm).subscribe((data: Pet[]) => {
-      this.filteredPets = data;
-    });
+  search() {
+    // Логика поиска животных
+    console.log('Searching for pets with query:', this.searchQuery);
   }
 }
