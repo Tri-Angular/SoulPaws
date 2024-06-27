@@ -1,4 +1,63 @@
-<form class="form-inline my-2 my-lg-0" (ngSubmit)="search()">
-    <input class="form-control mr-sm-2" type="search" placeholder="Search pets" aria-label="Search" [(ngModel)]="searchQuery" name="search">
-    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+<div class="container mt-4">
+  <form (ngSubmit)="onSearch()">
+    <div class="row mb-3 d-flex justify-content-center">
+      <div class="col-md-2">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Search"
+          [(ngModel)]="filterCriteria.searchText"
+          name="searchText"
+        />
+      </div>
+      <div class="col-md-2">
+        <select
+          class="form-control"
+          [(ngModel)]="filterCriteria.breed"
+          name="breed"
+        >
+          <option value="">All Breeds</option>
+          <option *ngFor="let breed of breeds" [value]="breed">
+            {{ breed }}
+          </option>
+        </select>
+      </div>
+      <div class="col-md-2">
+        <select
+          class="form-control"
+          [(ngModel)]="filterCriteria.gender"
+          name="gender"
+        >
+          <option value="">All Genders</option>
+          <option value="MALE">Male</option>
+          <option value="FEMALE">Female</option>
+        </select>
+      </div>
+      <div class="col-md-2">
+        <select
+          class="form-control"
+          [(ngModel)]="filterCriteria.size"
+          name="size"
+        >
+          <option value="">All Sizes</option>
+          <option value="Small">Small</option>
+          <option value="Medium">Medium</option>
+          <option value="Large">Large</option>
+        </select>
+      </div>
+      <div class="col-md-2">
+        <input
+          type="number"
+          class="form-control"
+          placeholder="Age"
+          [(ngModel)]="filterCriteria.age"
+          name="age"
+          min="0"
+        />
+      </div>
+      <div class="col-md-2">
+        <button type="submit" class="btn custom-btn w-100">Filter</button>
+      </div>
+    </div>
   </form>
+</div>

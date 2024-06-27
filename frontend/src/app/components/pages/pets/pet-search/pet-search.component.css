@@ -24,3 +24,15 @@
     padding: 10px;
     border: 1px solid #ddd;
   }
+
+  .custom-btn {
+    background-color: #fbaa53;
+    border: #fbaa53;
+    color: white;
+  }
+
+  .custom-btn:hover {
+    background-color: #e09b48;
+    border: #e09b48;
+    color: white;
+  }
