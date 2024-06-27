@@ -35,14 +35,37 @@
   align-self: start;
 }
 
+.btn-primary {
+  background-color: #4db8c0;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #3a9fa8;
+}
+
 .btn-adopt {
-  background-color: #ffa600 !important;
-  border-color: #ffa600 !important;
+  background-color: #fbaa53 !important;
+  border-color: #fbaa53 !important;
   color: white !important;
 }
 
 .btn-adopt:hover {
-  background-color: #e59400 !important;
-  border-color: #e59400 !important;
+  background-color: #e09b48 !important;
+  border-color: #e09b48 !important;
   color: white !important;
+}
+
+.d-flex {
+  display: flex;
+  justify-content: space-between;
+}
+
+.d-flex .btn {
+  flex: 1;
+  margin: 0 5px;
+}
+
+.card-text {
+  margin-bottom: 15px;
 }
