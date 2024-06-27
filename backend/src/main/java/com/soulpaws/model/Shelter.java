@@ -19,22 +19,42 @@ public class Shelter {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
+
     @Column(name = "name")
     private String name;
+
     @Column(name = "phone")
     private String phone;
+
     @Column(name = "email")
     private String email;
+
     @Column(name = "address")
     private String address;
+
     @Column(name = "province")
     private String province;
+
     @Column(name = "postal_code")
     private String postalCode;
+
     @Column(name = "description")
     private String description;
-    @Column(name = "created_at")
+
+    @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt;
+
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
+
+    @PrePersist
+    protected void onCreate() {
+        createdAt = LocalDateTime.now();
+        updatedAt = LocalDateTime.now();
+    }
+
+    @PreUpdate
+    protected void onUpdate() {
+        updatedAt = LocalDateTime.now();
+    }
 }

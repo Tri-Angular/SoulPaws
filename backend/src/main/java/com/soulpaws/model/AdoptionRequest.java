@@ -24,8 +24,8 @@ public class AdoptionRequest {
     @JoinColumn(name = "user_id")
     private User user;
     @ManyToOne
-    @JoinColumn(name = "pet_profile_id")
-    private PetProfile petProfile;
+    @JoinColumn(name = "pet_id")
+    private Pet pet;
     @Enumerated(EnumType.STRING)
     @Column(name = "status")
     private Status status = Status.PENDING;

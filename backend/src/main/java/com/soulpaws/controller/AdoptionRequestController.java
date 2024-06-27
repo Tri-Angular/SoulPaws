@@ -34,7 +34,7 @@ public class AdoptionRequestController {
         AdoptionRequest adoptionRequest = adoptionRequestRepository.findById(id).orElse(null);
         if (adoptionRequest != null) {
             adoptionRequest.setUser(adoptionRequestDetails.getUser());
-            adoptionRequest.setPetProfile(adoptionRequestDetails.getPetProfile());
+            adoptionRequest.setPet(adoptionRequestDetails.getPet());
             adoptionRequest.setStatus(adoptionRequestDetails.getStatus());
             return adoptionRequestRepository.save(adoptionRequest);
         }

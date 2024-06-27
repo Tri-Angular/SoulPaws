@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/shelters")
@@ -26,7 +27,8 @@ public class ShelterController {
 
     @GetMapping("/{id}")
     public Shelter getShelterById(@PathVariable Long id) {
-        return shelterService.getShelterById(id);
+        Optional<Shelter> shelter = shelterService.findById(id);
+        return shelter.orElse(null);
     }
 
     @PutMapping("/{id}")
