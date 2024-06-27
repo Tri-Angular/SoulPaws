@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Pet } from 'src/app/models/pet.model';
+import { Shelter } from 'src/app/models/shelter.model';
 
 @Injectable({
   providedIn: 'root'
@@ -10,12 +12,12 @@ export class PetService {
 
   constructor(private http: HttpClient) {}
 
-  getAllPets(): Observable<any> {
-    return this.http.get<any>(this.apiUrl);
+  getAllPets(): Observable<Pet[]> {
+    return this.http.get<Pet[]>(this.apiUrl);
   }
 
-  getPetById(id: number): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/${id}`);
+  getPetById(id: number): Observable<Pet> {
+    return this.http.get<Pet>(`${this.apiUrl}/${id}`);
   }
 
   createPet(pet: any): Observable<any> {
@@ -30,9 +32,6 @@ export class PetService {
     return this.http.delete<any>(`${this.apiUrl}/${id}`);
   }
 
-  searchPets(criteria: any): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/search`, criteria);    
-  }
   initiateAdoption(petId: number): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/${petId}/initiate-adoption`, {});
   }
