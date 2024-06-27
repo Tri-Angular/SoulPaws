@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ShelterService {
@@ -17,8 +18,8 @@ public class ShelterService {
         return shelterRepository.findAll();
     }
 
-    public Shelter getShelterById(Long id) {
-        return shelterRepository.findById(id).orElse(null);
+    public Optional<Shelter> findById(Long id) {
+        return shelterRepository.findById(id);
     }
 
     public Shelter createShelter(Shelter shelter) {
@@ -26,11 +27,13 @@ public class ShelterService {
     }
 
     public Shelter updateShelter(Long id, Shelter shelterDetails) {
-        Shelter shelter = shelterRepository.findById(id).orElse(null);
-        if (shelter != null) {
+        Optional<Shelter> optionalShelter = shelterRepository.findById(id);
+        if (optionalShelter.isPresent()) {
+            Shelter shelter = optionalShelter.get();
             shelter.setName(shelterDetails.getName());
             shelter.setAddress(shelterDetails.getAddress());
             shelter.setPhone(shelterDetails.getPhone());
+            shelter.setEmail(shelterDetails.getEmail());
             return shelterRepository.save(shelter);
         }
         return null;

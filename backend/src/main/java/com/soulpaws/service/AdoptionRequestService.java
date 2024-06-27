@@ -13,7 +13,6 @@ public class AdoptionRequestService {
     @Autowired
     private AdoptionRequestRepository adoptionRequestRepository;
 
-    // Métodos CRUD y cualquier otra lógica de negocio necesaria
     public List<AdoptionRequest> getAllAdoptionRequests() {
         return adoptionRequestRepository.findAll();
     }
@@ -30,7 +29,7 @@ public class AdoptionRequestService {
         AdoptionRequest adoptionRequest = adoptionRequestRepository.findById(id).orElse(null);
         if (adoptionRequest != null) {
             adoptionRequest.setUser(adoptionRequestDetails.getUser());
-            adoptionRequest.setPetProfile(adoptionRequestDetails.getPetProfile());
+            adoptionRequest.setPet(adoptionRequestDetails.getPet());
             adoptionRequest.setStatus(adoptionRequestDetails.getStatus());
             return adoptionRequestRepository.save(adoptionRequest);
         }

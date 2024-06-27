@@ -1,17 +1,28 @@
 package com.soulpaws.service;
 
 import com.soulpaws.model.Pet;
+import com.soulpaws.model.Shelter;
+import com.soulpaws.model.Breed;
 import com.soulpaws.repository.PetRepository;
+import com.soulpaws.service.ShelterService;
+import com.soulpaws.service.BreedService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PetService {
 
     @Autowired
     private PetRepository petRepository;
+
+    @Autowired
+    private ShelterService shelterService;
+
+    @Autowired
+    private BreedService breedService;
 
     public List<Pet> getAllPets() {
         return petRepository.findAll();
@@ -22,6 +33,17 @@ public class PetService {
     }
 
     public Pet createPet(Pet pet) {
+        // Загрузка объектов shelter и breed по их идентификаторам
+        if (pet.getShelter() != null && pet.getShelter().getId() != null) {
+            Optional<Shelter> shelter = shelterService.findById(pet.getShelter().getId());
+            shelter.ifPresent(pet::setShelter);
+        }
+
+        if (pet.getBreed() != null && pet.getBreed().getId() != null) {
+            Optional<Breed> breed = breedService.findById(pet.getBreed().getId());
+            breed.ifPresent(pet::setBreed);
+        }
+
         return petRepository.save(pet);
     }
 
@@ -31,6 +53,13 @@ public class PetService {
             pet.setName(petDetails.getName());
             pet.setAge(petDetails.getAge());
             pet.setBreed(petDetails.getBreed());
+            pet.setShelter(petDetails.getShelter());
+            pet.setSize(petDetails.getSize());
+            pet.setGender(petDetails.getGender());
+            pet.setImage(petDetails.getImage());
+            pet.setDescription(petDetails.getDescription());
+            pet.setUniqueFeatures(petDetails.getUniqueFeatures());
+            pet.setAvailabilityStatus(petDetails.getAvailabilityStatus());
             return petRepository.save(pet);
         }
         return null;
