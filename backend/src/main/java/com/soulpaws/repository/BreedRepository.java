@@ -1,2 +1,6 @@
-package com.soulpaws.repository;public interface BreedRepository {
-}
+package com.soulpaws.repository;
+
+import com.soulpaws.model.Breed;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface BreedRepository extends JpaRepository<Breed, Long> {}
