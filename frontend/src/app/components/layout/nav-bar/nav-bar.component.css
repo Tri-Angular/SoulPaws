@@ -1,5 +1,5 @@
 .custom-bg {
-  background-color: #4db8c0 !important;
+  background-color: #fbaa53 !important;
 }
 
 .navbar-brand {
@@ -8,31 +8,27 @@
 }
 
 .navbar-nav {
-  align-items: center; /* Center items vertically */
+  align-items: center;
 }
 
 .custom-nav-item {
-  height: 100%;
   display: flex;
   align-items: center;
+  margin: 0 20px;
 }
 
 .custom-nav-link {
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-weight: bold;
   color: white !important;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background-color 0.3s;
+  transition: transform 0.3s, color 0.3s;
   padding: 0 15px;
-  height: 200%;
 }
 
 .custom-nav-link:hover {
-  background-color: rgba(0, 0, 0, 0.2);
-  color: white !important;
-  display: flex;
-  align-items: center;
-  height: 100%;
+  transform: scale(1.05);
+}
+
+.custom-nav-link.active {
+  color: #7b000a !important;
 }
