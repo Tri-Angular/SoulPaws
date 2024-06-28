@@ -1,6 +1,6 @@
 <div class="container mt-4">
   <form (ngSubmit)="onSearch()">
-    <div class="row mb-3 d-flex justify-content-center">
+    <div class="row mb-3 d-flex justify-content-center align-items-end">
       <div class="col-md-2">
         <input
           type="text"
@@ -45,7 +45,7 @@
           <option value="Large">Large</option>
         </select>
       </div>
-      <div class="col-md-2">
+      <div class="col-md-1">
         <input
           type="number"
           class="form-control"
@@ -55,8 +55,11 @@
           min="0"
         />
       </div>
-      <div class="col-md-2">
+      <div class="col-md-1">
         <button type="submit" class="btn custom-btn w-100">Filter</button>
+      </div>
+      <div class="col-md-1">
+        <button type="button" class="btn btn-secondary w-100" (click)="onReset()">Reset</button>
       </div>
     </div>
   </form>

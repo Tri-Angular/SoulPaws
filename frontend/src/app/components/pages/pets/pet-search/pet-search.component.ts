@@ -37,4 +37,16 @@ export class PetSearchComponent implements OnInit {
   onSearch(): void {
     this.filterEvent.emit(this.filterCriteria);
   }
+
+  onReset(): void {
+    this.filterCriteria = {
+      searchText: '',
+      breed: '',
+      gender: '',
+      size: '',
+      age: ''
+    };
+    this.filterEvent.emit(this.filterCriteria);
+  }
+  
 }

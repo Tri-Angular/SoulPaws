@@ -51,6 +51,10 @@ export class PetListComponent implements OnInit {
 
       return matchesSearchText && matchesBreed && matchesGender && matchesSize && matchesAge;
     });
+    
+    if (this.filteredPets.length === 0) {
+      this.filteredPets = [...this.pets];
+    }
   }
 
   initiateAdoption(petId: number): void {
