@@ -20,7 +20,8 @@ export class PetSearchComponent implements OnInit {
     breed: '',
     gender: '',
     size: '',
-    age: ''
+    minAge: 0,
+    maxAge: 20
   };
 
   breeds: Breed[] = [];
@@ -44,9 +45,9 @@ export class PetSearchComponent implements OnInit {
       breed: '',
       gender: '',
       size: '',
-      age: ''
+      minAge: 0,
+      maxAge: 20
     };
     this.filterEvent.emit(this.filterCriteria);
   }
-  
 }

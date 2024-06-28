@@ -47,10 +47,10 @@ export class PetListComponent implements OnInit {
       const matchesBreed = filterCriteria.breed === '' || pet.breed.id === +filterCriteria.breed;
       const matchesGender = filterCriteria.gender === '' || pet.gender === filterCriteria.gender;
       const matchesSize = filterCriteria.size === '' || pet.size === filterCriteria.size;
-      const matchesAge = filterCriteria.age === '' || pet.age === +filterCriteria.age;
+      const matchesAge = pet.age >= filterCriteria.minAge && pet.age <= filterCriteria.maxAge;
 
       return matchesSearchText && matchesBreed && matchesGender && matchesSize && matchesAge;
-    });
+  });
     
     if (this.filteredPets.length === 0) {
       this.filteredPets = [...this.pets];
