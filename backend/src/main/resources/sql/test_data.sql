@@ -67,7 +67,7 @@ VALUES
 ('Ruby', 4, 2, 19, 'Large', 'FEMALE', 'https://images.saymedia-content.com/.image/c_limit%2Ccs_srgb%2Cq_auto:eco%2Cw_700/MjAzNTE3MzQ5MDU0MjYxMDQ0/saint-bernard-guide.webp', 'Gentil y amigable.', 'Gentil y amigable', 'AVAILABLE_FOR_ADOPTION'),
 ('Buster', 2, 2, 20, 'Small', 'MALE', 'https://www.zooplus.es/magazine/wp-content/uploads/2022/02/teckel-miniatura-Copy.jpeg', 'Juguetón y curioso.', 'Cuerpo largo, muy curioso', 'AVAILABLE_FOR_ADOPTION'),
 ('Lucy', 3, 2, 21, 'Medium', 'FEMALE', 'https://pamipe.com/wp-content/uploads/2022/09/Golden-Retriever-3.png', 'Amigable y leal.', 'Pelaje dorado, muy amigable', 'AVAILABLE_FOR_ADOPTION'),
-('Toby', 1, 2, 22, 'Large', 'MALE', 'https://scontent-mad2-1.xx.fbcdn.net/v/t39.30808-6/299596589_447655784088749_7630779265743608469_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=ySJRhD_cejMQ7kNvgHxnCls&_nc_ht=scontent-mad2-1.xx&oh=00_AYDIX3CIgXjByifO9nSU-f3eeN7Z5MLU6R1lc8naGF198Q&oe=66839A71', 'Fuerte y amigable.', 'Construcción musculosa, muy amigable', 'AVAILABLE_FOR_ADOPTION'),
+('Toby', 1, 2, 22, 'Large', 'MALE', 'https://i.pinimg.com/564x/d6/a4/00/d6a40051fa6af1b48bab0feb8c8c8691.jpg', 'Fuerte y amigable.', 'Construcción musculosa, muy amigable', 'AVAILABLE_FOR_ADOPTION'),
 ('Lily', 2, 1, 23, 'Small', 'FEMALE', 'https://www.tiendanimal.es/articulos/wp-content/uploads/2020/07/carlino-sentado-1200x800.jpg', 'Linda y juguetona.', 'Corta y linda', 'AVAILABLE_FOR_ADOPTION'),
 ('Zeus', 4, 1, 24, 'Medium', 'MALE', 'https://www.rover.com/blog/wp-content/uploads/akita-min-1024x683.jpg', 'Leal y protector.', 'Leal y protector', 'AVAILABLE_FOR_ADOPTION'),
 ('Maggie', 3, 1, 25, 'Large', 'FEMALE', 'https://cdn.redcanina.es/wp-content/uploads/2019/01/14205435/perro-viejo.jpg', 'Gentil y amigable.', 'Grande y gentil', 'AVAILABLE_FOR_ADOPTION'),
@@ -81,5 +81,5 @@ VALUES
 
 INSERT INTO soulpaws.adoption_requests (user_id, pet_id, status)
 VALUES
-(2, 1, 'Pending'),
-(3, 2, 'Pending');
+(2, 1, 'PENDING'),
+(3, 2, 'PENDING');

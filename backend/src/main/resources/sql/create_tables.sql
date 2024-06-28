@@ -53,7 +53,7 @@ CREATE TABLE IF NOT EXISTS soulpaws.adoption_requests (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
     user_id BIGINT,
     pet_id BIGINT,
-    status ENUM('Pending', 'Approved', 'Rejected') NOT NULL DEFAULT 'Pending',
+    status ENUM('PENDING', 'APPROVED', 'REJECTED') NOT NULL DEFAULT 'PENDING',
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES soulpaws.users(id),
