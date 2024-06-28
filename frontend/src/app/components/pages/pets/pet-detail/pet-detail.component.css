@@ -1,38 +1,80 @@
-.pet-detail {
-  padding: 20px;
+.card {
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
 
-.pet-detail h2 {
-  font-size: 32px;
-  margin-bottom: 20px;
-  font-weight: bold;
+.card-img-top,
+.carousel-inner img {
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  width: 100%; 
+  object-fit: cover;
 }
 
-.pet-detail h3 {
-  font-size: 24px;
-  margin-bottom: 15px;
+.card-body {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
 }
 
-.pet-detail p {
-  font-size: 18px;
-  margin: 5px 0;
+.card-body .card-title {
+  margin-bottom: 0.5rem;
 }
 
-.pet-characteristics {
-  margin-bottom: 20px;
+.card-body .card-text {
+  flex: 1 1 auto;
+}
+
+.card-body .btn {
+  align-self: start;
+}
+
+.btn-primary {
+  background-color: #4db8c0;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #3a9fa8;
+}
+
+.btn-adopt {
+  background-color: #fbaa53 !important;
+  border-color: #fbaa53 !important;
+  color: white !important;
+}
+
+.btn-adopt:hover {
+  background-color: #e09b48 !important;
+  border-color: #e09b48 !important;
+  color: white !important;
+}
+
+.d-flex {
+  display: flex;
+  justify-content: space-between;
+}
+
+.d-flex .btn {
+  flex: 1;
+  margin: 0 5px;
 }
 
 .pet-characteristics p {
-  font-size: 18px;
-  margin: 5px 0;
+  margin: 2px 0;
+  line-height: 1.2;
+  font-size: 0.875rem;
 }
 
-.edit-button {
-  margin-top: 20px;
+.pet-characteristics h3 {
+  margin-top: 10px;
+  margin-bottom: 5px;
+  font-size: 1rem;
 }
 
-.carousel-inner img {
-  width: 100%;
-  height: 500px;
+.pet-image {
+  height: 300px;
   object-fit: cover;
 }

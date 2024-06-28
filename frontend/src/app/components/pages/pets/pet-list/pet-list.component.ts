@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { PetService } from 'src/app/services/api/pet.service';
 import { Pet } from 'src/app/models/pet.model';
 import { PetSearchComponent } from '../pet-search/pet-search.component';
+import { AdoptionRequestService } from 'src/app/services/api/adoption-request.service';
 
 @Component({
   selector: 'app-pet-list',
@@ -24,7 +25,7 @@ export class PetListComponent implements OnInit {
     age: ''
   };
 
-  constructor(private petService: PetService) {}
+  constructor(private petService: PetService, private adoptionRequestService: AdoptionRequestService) {}
 
   ngOnInit(): void {
     this.petService.getAllPets().subscribe((data: Pet[]) => {
@@ -58,8 +59,10 @@ export class PetListComponent implements OnInit {
   }
 
   initiateAdoption(petId: number): void {
-    console.log('Initiating adoption for pet with ID:', petId);
-    // Implement the logic for adopting a pet
-    // This might involve calling a service method to send an adoption request
+    this.adoptionRequestService.createAdoptionRequest({ petId }).subscribe(response => {
+      console.log('Adoption request initiated', response);
+    }, error => {
+      console.error('Error initiating adoption request', error);
+    });
   }
 }

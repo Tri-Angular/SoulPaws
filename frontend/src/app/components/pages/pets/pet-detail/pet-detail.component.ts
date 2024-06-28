@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { PetService } from 'src/app/services/api/pet.service';
 import { Pet } from 'src/app/models/pet.model';
 import { AuthService } from 'src/app/services/api/auth.service';
+import { AdoptionRequestService } from 'src/app/services/api/adoption-request.service';
 
 @Component({
   selector: 'app-pet-detail',
@@ -20,7 +21,8 @@ export class PetDetailComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private petService: PetService,
-    private authService: AuthService
+    private authService: AuthService,
+    private adoptionRequestService: AdoptionRequestService
   ) {}
 
   ngOnInit(): void {
@@ -36,5 +38,13 @@ export class PetDetailComponent implements OnInit {
 
   editPet(): void {
     this.router.navigate(['/edit-pet', this.pet?.id]);
+  }
+
+  initiateAdoption(petId: number): void {
+    this.adoptionRequestService.createAdoptionRequest({ petId }).subscribe(response => {
+      console.log('Adoption request initiated', response);
+    }, error => {
+      console.error('Error initiating adoption request', error);
+    });
   }
 }

@@ -4,7 +4,7 @@ import { PetListComponent } from './components/pages/pets/pet-list/pet-list.comp
 import { LoginComponent } from './components/pages/auth/login/login.component';
 import { RegisterComponent } from './components/pages/auth/register/register.component';
 import { PetDetailComponent } from './components/pages/pets/pet-detail/pet-detail.component';
-import { AboutUsComponent } from './components/pages/sobre-nosotros/about-us.component';
+import { AboutUsComponent } from './components/pages/about-us/about-us.component';
 
 
 export const routes: Routes = [

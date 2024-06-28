@@ -1,17 +1,17 @@
-<div class="container mt-4">
-  <form (ngSubmit)="onSearch()" class="pet-search d-flex align-items-center flex-wrap">
-    <div class="col-auto">
+<div class="container mt-4 d-flex justify-content-center">
+  <form (ngSubmit)="onSearch()" class="pet-search d-flex align-items-center flex-wrap justify-content-center">
+    <div class="col-auto mb-2 me-2">
       <input
         type="text"
-        class="form-control form-control-lg"
+        class="form-control"
         placeholder="Search"
         [(ngModel)]="filterCriteria.searchText"
         name="searchText"
       />
     </div>
-    <div class="col-auto">
+    <div class="col-auto mb-2 me-2">
       <select
-        class="form-control form-control-lg"
+        class="form-control"
         [(ngModel)]="filterCriteria.breed"
         name="breed"
       >
@@ -21,9 +21,9 @@
         </option>
       </select>
     </div>
-    <div class="col-auto">
+    <div class="col-auto mb-2 me-2">
       <select
-        class="form-control form-control-lg"
+        class="form-control"
         [(ngModel)]="filterCriteria.gender"
         name="gender"
       >
@@ -32,9 +32,9 @@
         <option value="FEMALE">Female</option>
       </select>
     </div>
-    <div class="col-auto">
+    <div class="col-auto mb-2 me-2">
       <select
-        class="form-control form-control-lg"
+        class="form-control"
         [(ngModel)]="filterCriteria.size"
         name="size"
       >
@@ -44,37 +44,35 @@
         <option value="Large">Large</option>
       </select>
     </div>
-    <div class="col-auto d-flex align-items-center">
+    <div class="col-auto mb-2 me-2 d-flex align-items-center">
       <label for="minAge" class="form-label mb-0 me-2">Min Age</label>
       <input
         type="number"
-        class="form-control form-control-lg"
+        class="form-control age-input"
         id="minAge"
         [(ngModel)]="filterCriteria.minAge"
         name="minAge"
         min="0"
         max="20"
-        style="width: 60px;"
       />
     </div>
-    <div class="col-auto d-flex align-items-center">
+    <div class="col-auto mb-2 me-2 d-flex align-items-center">
       <label for="maxAge" class="form-label mb-0 me-2">Max Age</label>
       <input
         type="number"
-        class="form-control form-control-lg"
+        class="form-control age-input"
         id="maxAge"
         [(ngModel)]="filterCriteria.maxAge"
         name="maxAge"
         min="0"
         max="20"
-        style="width: 60px;"
       />
     </div>
-    <div class="col-auto">
-      <button type="submit" class="btn custom-btn btn-lg mx-2">Filter</button>
+    <div class="col-auto mb-2 me-2">
+      <button type="submit" class="btn custom-btn mx-2">Filter</button>
     </div>
-    <div class="col-auto">
-      <button type="button" class="btn btn-secondary btn-lg mx-2" (click)="onReset()">Reset</button>
+    <div class="col-auto mb-2 me-2">
+      <button type="button" class="btn btn-secondary mx-2" (click)="onReset()">Reset</button>
     </div>
   </form>
 </div>

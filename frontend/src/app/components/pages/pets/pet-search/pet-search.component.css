@@ -1,35 +1,55 @@
 .pet-search {
-  padding: 20px;
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
+  padding: 5px;
+}
+
+.pet-search h2 {
+  font-size: 1.25rem;
 }
 
 .pet-search input,
-.pet-search select,
-.pet-search button {
-  margin-bottom: 0;
-  padding: 10px;
+.pet-search select {
+  margin-bottom: 5px;
+  padding: 3px;
+  width: 100%;
+  font-size: 0.875rem;
+  height: 38px;
 }
 
-.pet-search label {
-  margin-bottom: 0;
+.pet-search .age-input {
+  width: 50px;
+  font-size: 0.875rem;
 }
 
-.pet-search .col-auto {
-  display: flex;
-  align-items: center;
+.pet-search ul {
+  list-style: none;
+  padding: 0;
 }
 
-.custom-btn {
+.pet-search li {
+  background-color: #f9f9f9;
+  margin-bottom: 3px;
+  padding: 5px;
+  border: 1px solid #ddd;
+}
+
+.custom-btn,
+.btn-secondary {
   background-color: #fbaa53;
   border: #fbaa53;
   color: white;
+  padding: 5px 10px;
+  font-size: 0.875rem;
+  height: 38px;
+  width: 100px;
 }
 
 .custom-btn:hover {
   background-color: #e09b48;
   border: #e09b48;
   color: white;
+}
+
+.btn-secondary:hover {
+  background-color: #6c757d;
+  border: #6c757d;
 }
