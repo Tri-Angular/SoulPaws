@@ -37,6 +37,7 @@ public class SecurityConfiguration {
                         authorizeRequests
                                 .requestMatchers("/auth/**").permitAll()
                                 .requestMatchers("/pets/**").permitAll()
+                                .requestMatchers("/adoptions/**").permitAll()
                                 .anyRequest().authenticated())
                 .cors(cors -> cors.configurationSource(corsConfigurationSource()))
                 .authenticationProvider(authenticationProvider)
