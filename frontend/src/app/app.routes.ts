@@ -4,9 +4,12 @@ import { PetListComponent } from './components/pages/pets/pet-list/pet-list.comp
 import { LoginComponent } from './components/pages/auth/login/login.component';
 import { RegisterComponent } from './components/pages/auth/register/register.component';
 import { PetDetailComponent } from './components/pages/pets/pet-detail/pet-detail.component';
+import { AboutUsComponent } from './components/pages/sobre-nosotros/about-us.component';
+
 
 export const routes: Routes = [
   { path: 'home', component: HomeComponent },
+  { path: 'about', component: AboutUsComponent },
   { path: 'pet-list', component: PetListComponent },
   { path: 'pet-detail/:id', component: PetDetailComponent },
   { path: 'login', component: LoginComponent },
