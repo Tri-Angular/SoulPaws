@@ -40,11 +40,11 @@ export class PetListComponent implements OnInit {
     this.filteredPets = this.pets.filter(pet => {
       const matchesSearchText = searchText === '' || 
         pet.name.toLowerCase().includes(searchText) ||
-        pet.breed.toLowerCase().includes(searchText) ||
+        pet.breed.breed.toLowerCase().includes(searchText) ||
         pet.gender.toLowerCase().includes(searchText) ||
         pet.size.toLowerCase().includes(searchText);
 
-      const matchesBreed = filterCriteria.breed === '' || pet.breed === filterCriteria.breed;
+      const matchesBreed = filterCriteria.breed === '' || pet.breed.id === +filterCriteria.breed;
       const matchesGender = filterCriteria.gender === '' || pet.gender === filterCriteria.gender;
       const matchesSize = filterCriteria.size === '' || pet.size === filterCriteria.size;
       const matchesAge = filterCriteria.age === '' || pet.age === +filterCriteria.age;

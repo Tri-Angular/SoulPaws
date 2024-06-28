@@ -17,8 +17,8 @@
           name="breed"
         >
           <option value="">All Breeds</option>
-          <option *ngFor="let breed of breeds" [value]="breed">
-            {{ breed }}
+          <option *ngFor="let breed of breeds" [value]="breed.id">
+            {{ breed.breed }}
           </option>
         </select>
       </div>

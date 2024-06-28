@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { PetService } from 'src/app/services/api/pet.service';
 import { Shelter } from 'src/app/models/shelter.model';
+import { Breed } from 'src/app/models/breed.model';
 
 @Component({
   selector: 'app-pet-search',
@@ -22,7 +23,7 @@ export class PetSearchComponent implements OnInit {
     age: ''
   };
 
-  breeds: string[] = [];
+  breeds: Breed[] = [];
   shelters: Shelter[] = [];
 
   constructor(private petService: PetService) {}
