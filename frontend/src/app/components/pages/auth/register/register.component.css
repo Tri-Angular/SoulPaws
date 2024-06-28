@@ -7,18 +7,18 @@
 }
 
 .card-header {
-  background-color: #4db8c0;
+  background-color: #fbaa53;
   color: white;
 }
 
 .btn-primary {
-  background-color: #4db8c0;
+  background-color: #fbaa53;
   border: none;
   height: 38px;
 }
 
 .btn-primary:hover {
-  background-color: #3a9fa8;
+  background-color: #fbaa53;
 }
 
 .custom-btn {

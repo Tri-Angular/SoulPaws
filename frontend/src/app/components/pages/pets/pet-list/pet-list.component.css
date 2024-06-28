@@ -1,3 +1,7 @@
+.pet-list-container {
+  background-color: #eff1f3;
+}
+
 .card {
   border-radius: 15px;
   transition: transform 0.2s, box-shadow 0.2s;
@@ -13,6 +17,7 @@
 .card-img-top {
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
+  width: 100%; 
   height: 200px; 
   object-fit: cover;
 }
@@ -29,43 +34,37 @@
 
 .card-body .card-text {
   flex: 1 1 auto;
+  margin-bottom: 15px;
 }
 
 .card-body .btn {
   align-self: start;
+  flex: 1;
+  margin: 0 5px;
 }
 
 .btn-primary {
-  background-color: #4db8c0;
+  background-color: #fbaa53;
   border: none;
 }
 
 .btn-primary:hover {
-  background-color: #3a9fa8;
+  background-color: #e09b48;
 }
 
 .btn-adopt {
-  background-color: #fbaa53 !important;
-  border-color: #fbaa53 !important;
+  background-color: #7b000a !important;
+  border-color: #7b000a !important;
   color: white !important;
 }
 
 .btn-adopt:hover {
-  background-color: #e09b48 !important;
-  border-color: #e09b48 !important;
+  background-color: #ad0916 !important;
+  border-color: #ad0916 !important;
   color: white !important;
 }
 
 .d-flex {
   display: flex;
   justify-content: space-between;
-}
-
-.d-flex .btn {
-  flex: 1;
-  margin: 0 5px;
-}
-
-.card-text {
-  margin-bottom: 15px;
 }

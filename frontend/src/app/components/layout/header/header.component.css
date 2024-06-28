@@ -1,0 +1,22 @@
+.logo {
+  max-width: 100%;
+  height: auto;
+  max-height: 60px;
+}
+
+.custom-header {
+  background-color: #f3dd8e;
+  color: white;
+}
+
+.btn-custom {
+  background-color: #fbaa53;
+  color: #7b000a;
+  border: none;
+  font-weight: bold;
+}
+
+.btn-custom:hover {
+  background-color: #e09b48;
+  color: #7b000a;
+}

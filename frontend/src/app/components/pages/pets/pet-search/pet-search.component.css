@@ -32,15 +32,15 @@
   border: 1px solid #ddd;
 }
 
-.custom-btn,
-.btn-secondary {
+.custom-btn {
   background-color: #fbaa53;
   border: #fbaa53;
-  color: white;
+  color: #7b000a;
   padding: 5px 10px;
   font-size: 0.875rem;
   height: 38px;
   width: 100px;
+  font-weight: bold;
 }
 
 .custom-btn:hover {

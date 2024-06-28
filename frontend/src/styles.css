@@ -1,3 +1,6 @@
 html {
     overflow-y: scroll;
   }
+  body {
+    background-color: #eff1f3 !important;
+  }
