@@ -1,21 +1,35 @@
 .container {
-    margin-top: 50px;
-  }
-  
-  .card {
-    border-radius: 10px;
-  }
-  
-  .card-header {
-    background-color: #4db8c0;
-    color: white;
-  }
-  
-  .btn-primary {
-    background-color: #4db8c0;
-    border: none;
-  }
-  
-  .btn-primary:hover {
-    background-color: #3a9fa8;
-  }
+  margin-top: 50px;
+}
+
+.card {
+  border-radius: 10px;
+}
+
+.card-header {
+  background-color: #4db8c0;
+  color: white;
+}
+
+.btn-primary {
+  background-color: #4db8c0;
+  border: none;
+  height: 38px;
+}
+
+.btn-primary:hover {
+  background-color: #3a9fa8;
+}
+
+.custom-btn {
+  background-color: #fbaa53 !important;
+  border-color: #fbaa53 !important;
+  color: white !important;
+  height: 38px;
+}
+
+.custom-btn:hover {
+  background-color: #e09b48 !important;
+  border-color: #e09b48 !important;
+  color: white !important;
+}
