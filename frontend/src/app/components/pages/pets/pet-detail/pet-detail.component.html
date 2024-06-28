@@ -1,9 +1,41 @@
-<div class="pet-detail">
-    <h2>Detalle de Mascota</h2>
-    <div *ngIf="pet">
-      <h3>{{ pet.name }}</h3>
-      <p>Raza: {{ pet.breed }}</p>
-      <p>Edad: {{ pet.age }}</p>
-      <p>Descripción: {{ pet.description }}</p>
+<div class="container mt-4" *ngIf="pet">
+  <div class="row">
+    <div class="col-md-8">
+      <h2>Meet... <span class="text-body-secondary">{{ pet.name }}</span></h2>
+      <div class="pet-characteristics">
+        <p><strong>Breed:</strong> {{ pet.breed.breed }}</p>
+        <p><strong>Age:</strong> {{ pet.age }}</p>
+        <p><strong>Size:</strong> {{ pet.size }}</p>
+        <p><strong>Gender:</strong> {{ pet.gender }}</p>
+        <p><strong>Description:</strong> {{ pet.description }}</p>
+        <p><strong>Unique Features:</strong> {{ pet.unique_features }}</p>
+        <p><strong>Availability Status:</strong> {{ pet.availability_status }}</p>
+        <h3>Shelter Information:</h3>
+        <p><strong>Shelter Name:</strong> {{ pet.shelter.name }}</p>
+        <p><strong>Address:</strong> {{ pet.shelter.address }}</p>
+        <p><strong>Province:</strong> {{ pet.shelter.province }}</p>
+        <p><strong>Postal Code:</strong> {{ pet.shelter.postalCode }}</p>
+        <p><strong>Phone:</strong> {{ pet.shelter.phone }}</p>
+        <p><strong>Email:</strong> {{ pet.shelter.email }}</p>
+        <p><strong>Description:</strong> {{ pet.shelter.description }}</p>
+      </div>
+      <button *ngIf="isAdmin" class="btn btn-primary edit-button" (click)="editPet()">Edit Pet</button>
+    </div>
+    <div class="col-md-4">
+      <div id="petCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img [src]="pet.image" class="d-block w-100" alt="Image of {{ pet.name }}">
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#petCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#petCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
     </div>
   </div>

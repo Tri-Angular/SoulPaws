@@ -1,19 +1,26 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { PetService } from '../../../../services/api/pet.service';
-import { Pet } from '../../../../models/pet.model';
+import { ActivatedRoute, Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { PetService } from 'src/app/services/api/pet.service';
+import { Pet } from 'src/app/models/pet.model';
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: 'app-pet-detail',
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './pet-detail.component.html',
   styleUrls: ['./pet-detail.component.css']
 })
 export class PetDetailComponent implements OnInit {
   pet: Pet | undefined;
+  isAdmin: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
-    private petService: PetService
+    private router: Router,
+    private petService: PetService,
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
@@ -23,5 +30,11 @@ export class PetDetailComponent implements OnInit {
         this.pet = data;
       });
     }
+
+    this.isAdmin = this.authService.isAdmin();
+  }
+
+  editPet(): void {
+    this.router.navigate(['/edit-pet', this.pet?.id]);
   }
 }

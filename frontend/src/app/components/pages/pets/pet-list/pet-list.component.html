@@ -9,7 +9,7 @@
           <p class="card-text">{{ pet.description }}</p>
           <p class="card-text"><small class="text-muted">Age: {{ pet.age }}</small></p>
           <div class="d-flex justify-content-between">
-            <a [routerLink]="['/pet-profile', pet.id]" class="btn btn-primary">Details</a>
+            <a [routerLink]="['/pet-detail', pet.id]" class="btn btn-primary">Details</a>
             <button class="btn btn-adopt" (click)="initiateAdoption(pet.id)">Adopt</button>
           </div>
         </div>

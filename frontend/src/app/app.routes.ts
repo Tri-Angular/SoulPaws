@@ -3,10 +3,12 @@ import { HomeComponent } from './components/pages/home/home.component';
 import { PetListComponent } from './components/pages/pets/pet-list/pet-list.component';
 import { LoginComponent } from './components/pages/auth/login/login.component';
 import { RegisterComponent } from './components/pages/auth/register/register.component';
+import { PetDetailComponent } from './components/pages/pets/pet-detail/pet-detail.component';
 
 export const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'pet-list', component: PetListComponent },
+  { path: 'pet-detail/:id', component: PetDetailComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: '', redirectTo: '/pet-list', pathMatch: 'full' },
