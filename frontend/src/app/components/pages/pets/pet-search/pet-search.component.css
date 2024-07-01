@@ -46,10 +46,4 @@
 .custom-btn:hover {
   background-color: #e09b48;
   border: #e09b48;
-  color: white;
-}
-
-.btn-secondary:hover {
-  background-color: #6c757d;
-  border: #6c757d;
 }
