@@ -4,6 +4,7 @@ import com.soulpaws.model.User;
 import com.soulpaws.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.security.core.Authentication;
 
 import java.util.List;
 
@@ -22,6 +23,11 @@ public class UserController {
     @PostMapping
     public User createUser(@RequestBody User user) {
         return userService.createUser(user);
+    }
+
+    @GetMapping("/me")
+    public User getCurrentUser(Authentication authentication) {
+        return userService.getUserByEmail(authentication.getName());
     }
 
     @GetMapping("/{id}")
