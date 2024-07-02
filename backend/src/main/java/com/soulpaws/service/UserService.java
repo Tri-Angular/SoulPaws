@@ -45,7 +45,7 @@ public class UserService implements UserDetailsService {
     public User updateUser(Long id, User userDetails) {
         User user = userRepository.findById(id).orElse(null);
         if (user != null) {
-            user.setUsername(userDetails.getUsername());
+            user.setName(userDetails.getName());
             user.setPassword(userDetails.getPassword());
             user.setEmail(userDetails.getEmail());
             return userRepository.save(user);

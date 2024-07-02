@@ -2,9 +2,11 @@ package com.soulpaws.model;
 
 import jakarta.persistence.*;
 import lombok.*;
+import lombok.experimental.Accessors;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
@@ -17,6 +19,7 @@ import java.util.List;
 @AllArgsConstructor
 @Entity
 @Table(name = "users")
+@Accessors(chain = true)
 public class User implements UserDetails {
 
     @Id
@@ -27,7 +30,7 @@ public class User implements UserDetails {
     private String name;
     @Column(name = "age")
     private int age;
-    @Column(name = "email",unique = true, length = 100, nullable = false)
+    @Column(name = "email", unique = true, length = 100, nullable = false)
     private String email;
     @Column(name = "password")
     private String password;
@@ -44,7 +47,7 @@ public class User implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of();
+        return List.of(new SimpleGrantedAuthority("ROLE_" + role.name()));
     }
 
     @Override
@@ -53,7 +56,9 @@ public class User implements UserDetails {
     }
 
     @Override
-    public String getUsername() { return email;}
+    public String getUsername() {
+        return email;
+    }
 
     @Override
     public boolean isAccountNonExpired() {
@@ -75,32 +80,9 @@ public class User implements UserDetails {
         return true;
     }
 
-    public void setUsername(String username) {
-    }
-
-    public User setEmail(String email) {
-        this.email = email;
-        return this;
-    }
-
-    public User setName(String name) {
-        this.name = name;
-        return this;
-    }
-
-    public User setPassword(String password) {
-        this.password = password;
-        return this;
-    }
-
-    // Set default role to USER
-    @PrePersist
-    private void setDefaultRole() {
-        if (role == null) {
-            role = Role.USER;
-        }
-    }
     public enum Role {
-        ADMIN, USER
+        USER,
+        SHELTER,
+        ADMIN
     }
 }
