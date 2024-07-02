@@ -7,6 +7,7 @@ import com.soulpaws.service.PetService;
 import com.soulpaws.service.ShelterService;
 import com.soulpaws.service.BreedService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -31,6 +32,7 @@ public class PetController {
     }
 
     @PostMapping
+    @PreAuthorize("hasRole('SHELTER') or hasRole('ADMIN')")
     public Pet createPet(@RequestBody Pet pet) {
         System.out.println("Received pet: " + pet);
 
@@ -55,11 +57,13 @@ public class PetController {
     }
 
     @PutMapping("/{id}")
+    @PreAuthorize("hasRole('SHELTER') or hasRole('ADMIN')")
     public Pet updatePet(@PathVariable Long id, @RequestBody Pet petDetails) {
         return petService.updatePet(id, petDetails);
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasRole('ADMIN') or hasRole('SHELTER')")
     public void deletePet(@PathVariable Long id) {
         petService.deletePet(id);
     }
