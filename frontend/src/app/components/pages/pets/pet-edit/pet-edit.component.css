@@ -1,0 +1,17 @@
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+button {
+  width: 100%;
+}
+.btn-primary {
+  margin-top: 15px;
+  background-color: #fbaa53;
+  border-color: #fbaa53;
+}

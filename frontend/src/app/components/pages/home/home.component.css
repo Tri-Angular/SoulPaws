@@ -1,0 +1,41 @@
+.carousel-item img {
+    height: 500px;
+    object-fit: contain;
+  }
+  
+  .zoom-container {
+    overflow: hidden;
+  }
+  
+  .zoom-image {
+    transition: transform 10s ease;
+  }
+  
+  .carousel-item.active .zoom-image {
+    transform: scale(1.1);
+  }
+  
+  .carousel-caption {
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+  }
+  
+  .btn-primary {
+    background-color: #fbaa53;
+    border: none;
+  }
+  
+  .btn-primary:hover {
+    background-color: #e09b48;
+  }
+  
+  .carousel-control-prev,
+  .carousel-control-next {
+    width: 5%;
+  }
+  
+  .carousel-caption a {
+    display: inline-block;
+    margin-top: 20px;
+  }
+  

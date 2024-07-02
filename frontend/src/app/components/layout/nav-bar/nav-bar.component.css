@@ -1,0 +1,34 @@
+.custom-bg {
+  background-color: #fbaa53 !important;
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.navbar-nav {
+  align-items: center;
+}
+
+.custom-nav-item {
+  display: flex;
+  align-items: center;
+  margin: 0 20px;
+}
+
+.custom-nav-link {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #7b000a !important;
+  transition: transform 0.3s, color 0.3s;
+  padding: 0 15px;
+}
+
+.custom-nav-link:hover {
+  transform: scale(1.05);
+}
+
+.custom-nav-link.active {
+  color: #f3dd8e !important;
+}

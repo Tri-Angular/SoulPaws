@@ -1,0 +1,80 @@
+.card {
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.card-img-top,
+.carousel-inner img {
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  width: 100%; 
+  object-fit: cover;
+}
+
+.card-body {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-body .card-title {
+  margin-bottom: 0.5rem;
+}
+
+.card-body .card-text {
+  flex: 1 1 auto;
+}
+
+.card-body .btn {
+  align-self: start;
+}
+
+.btn-primary {
+  background-color: #fbaa53;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #e09b48;
+}
+
+.btn-adopt {
+  background-color: #fbaa53 !important;
+  border-color: #fbaa53 !important;
+  color: white !important;
+}
+
+.btn-adopt:hover {
+  background-color: #e09b48 !important;
+  border-color: #e09b48 !important;
+  color: white !important;
+}
+
+.d-flex {
+  display: flex;
+  justify-content: space-between;
+}
+
+.d-flex .btn {
+  flex: 1;
+  margin: 0 5px;
+}
+
+.pet-characteristics p {
+  margin: 2px 0;
+  line-height: 1.2;
+  font-size: 0.875rem;
+}
+
+.pet-characteristics h3 {
+  margin-top: 10px;
+  margin-bottom: 5px;
+  font-size: 1rem;
+}
+
+.pet-image {
+  height: 300px;
+  object-fit: cover;
+}

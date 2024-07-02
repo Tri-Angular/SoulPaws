@@ -1,0 +1,31 @@
+.user-register {
+    padding: 20px;
+  }
+  
+  .user-register h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .user-register form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .user-register label {
+    margin-top: 10px;
+  }
+  
+  .user-register input {
+    margin-top: 5px;
+  }
+  
+  .user-register button {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  

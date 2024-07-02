@@ -1,0 +1,15 @@
+<header class="custom-header text-white">
+  <div class="container-fluid">
+    <div class="row align-items-center py-2">
+      <div class="col-md-6">
+        <img src="assets/logo.png" alt="Logo" class="logo">
+      </div>
+      <div class="col-md-6 text-end">
+        <button class="btn btn-custom me-2" *ngIf="!isLoggedIn()" (click)="login()">Login</button>
+        <button class="btn btn-custom" *ngIf="!isLoggedIn()" (click)="register()">Register</button>
+        <button class="btn btn-custom" *ngIf="isLoggedIn()" (click)="logout()">Logout</button>
+      </div>
+    </div>
+  </div>
+  <app-nav-bar></app-nav-bar>
+</header>

@@ -1,0 +1,35 @@
+.container {
+  margin-top: 50px;
+}
+
+.card {
+  border-radius: 10px;
+}
+
+.card-header {
+  background-color: #fbaa53;
+  color: white;
+}
+
+.btn-primary {
+  background-color: #fbaa53;
+  border: none;
+  height: 38px;
+}
+
+.btn-primary:hover {
+  background-color: #fbaa53;
+}
+
+.custom-btn {
+  background-color: #fbaa53 !important;
+  border-color: #fbaa53 !important;
+  color: white !important;
+  height: 38px;
+}
+
+.custom-btn:hover {
+  background-color: #e09b48 !important;
+  border-color: #e09b48 !important;
+  color: white !important;
+}

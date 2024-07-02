@@ -1,0 +1,49 @@
+.pet-search {
+  padding: 5px;
+}
+
+.pet-search h2 {
+  font-size: 1.25rem;
+}
+
+.pet-search input,
+.pet-search select {
+  margin-bottom: 5px;
+  padding: 3px;
+  width: 100%;
+  font-size: 0.875rem;
+  height: 38px;
+}
+
+.pet-search .age-input {
+  width: 50px;
+  font-size: 0.875rem;
+}
+
+.pet-search ul {
+  list-style: none;
+  padding: 0;
+}
+
+.pet-search li {
+  background-color: #f9f9f9;
+  margin-bottom: 3px;
+  padding: 5px;
+  border: 1px solid #ddd;
+}
+
+.custom-btn {
+  background-color: #fbaa53;
+  border: #fbaa53;
+  color: #7b000a;
+  padding: 5px 10px;
+  font-size: 0.875rem;
+  height: 38px;
+  width: 100px;
+  font-weight: bold;
+}
+
+.custom-btn:hover {
+  background-color: #e09b48;
+  border: #e09b48;
+}

@@ -1,0 +1,70 @@
+.pet-list-container {
+  background-color: #eff1f3;
+}
+
+.card {
+  border-radius: 15px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+}
+
+.card-img-top {
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  width: 100%; 
+  height: 200px; 
+  object-fit: cover;
+}
+
+.card-body {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-body .card-title {
+  margin-bottom: 0.5rem;
+}
+
+.card-body .card-text {
+  flex: 1 1 auto;
+  margin-bottom: 15px;
+}
+
+.card-body .btn {
+  align-self: start;
+  flex: 1;
+  margin: 0 5px;
+}
+
+.btn-primary {
+  background-color: #fbaa53;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #e09b48;
+}
+
+.btn-adopt {
+  background-color: #7b000a !important;
+  border-color: #7b000a !important;
+  color: white !important;
+}
+
+.btn-adopt:hover {
+  background-color: #ad0916 !important;
+  border-color: #ad0916 !important;
+  color: white !important;
+}
+
+.d-flex {
+  display: flex;
+  justify-content: space-between;
+}
