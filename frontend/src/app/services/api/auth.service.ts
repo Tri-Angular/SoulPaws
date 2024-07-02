@@ -2,26 +2,29 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
+import { User } from 'src/app/models/user.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   private apiUrl = 'http://localhost:8005/auth';
-  private currentUser: any = null;
 
-  constructor(private http: HttpClient) {
-    const storedUser = localStorage.getItem('currentUser');
-    if (storedUser) {
-      this.currentUser = JSON.parse(storedUser);
-    }
-  }
+  constructor(private http: HttpClient) {}
 
   login(credentials: any): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/login`, credentials).pipe(
-      tap(user => {
-        this.currentUser = user;
-        localStorage.setItem('currentUser', JSON.stringify(user));
+      tap(response => {
+        if (response && response.token && response.role) {
+          const user: User = {
+            ...response,
+            email: credentials.email 
+          };
+          console.log('Login response user:', user);
+          localStorage.setItem('currentUser', JSON.stringify(user));
+        } else {
+          console.error('Login response is missing user or token', response);
+        }
       })
     );
   }
@@ -31,19 +34,30 @@ export class AuthService {
   }
 
   logout(): void {
-    this.currentUser = null;
     localStorage.removeItem('currentUser');
   }
 
-  getCurrentUser(): any {
-    return this.currentUser;
+  getCurrentUser(): User | null {
+    const storedUser = localStorage.getItem('currentUser');
+    return storedUser ? JSON.parse(storedUser) : null;
   }
 
   isLoggedIn(): boolean {
-    return !!this.currentUser;
+    return this.getCurrentUser() !== null;
   }
 
   isAdmin(): boolean {
-    return this.currentUser && this.currentUser.role === 'ADMIN';
+    const currentUser = this.getCurrentUser();
+    return currentUser?.role === 'ADMIN';
+  }
+
+  isShelter(): boolean {
+    const currentUser = this.getCurrentUser();
+    return currentUser?.role === 'SHELTER';
+  }
+
+  isUser(): boolean {
+    const currentUser = this.getCurrentUser();
+    return currentUser?.role === 'USER';
   }
 }
