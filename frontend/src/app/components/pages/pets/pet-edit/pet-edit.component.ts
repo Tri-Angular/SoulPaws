@@ -50,7 +50,18 @@ export class PetEditComponent implements OnInit {
     if (id) {
       this.petService.getPetById(Number(id)).subscribe((data: Pet) => {
         this.pet = data;
-        this.petForm.patchValue(this.pet);
+        this.petForm.patchValue({
+          name: this.pet.name,
+          age: this.pet.age,
+          breed: this.pet.breed.id,
+          shelter: this.pet.shelter.id,
+          size: this.pet.size,
+          gender: this.pet.gender,
+          image: this.pet.image,
+          description: this.pet.description,
+          unique_features: this.pet.unique_features,
+          availability_status: this.pet.availability_status
+        });
       });
     }
 
