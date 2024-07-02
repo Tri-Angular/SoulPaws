@@ -3,6 +3,7 @@ package com.soulpaws.controller;
 import com.soulpaws.model.Shelter;
 import com.soulpaws.service.ShelterService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,6 +22,7 @@ public class ShelterController {
     }
 
     @PostMapping
+    @PreAuthorize("hasRole('ADMIN') or hasRole('SHELTER')")
     public Shelter createShelter(@RequestBody Shelter shelter) {
         return shelterService.createShelter(shelter);
     }
@@ -32,11 +34,13 @@ public class ShelterController {
     }
 
     @PutMapping("/{id}")
+    @PreAuthorize("hasRole('SHELTER') or hasRole('ADMIN')")
     public Shelter updateShelter(@PathVariable Long id, @RequestBody Shelter shelterDetails) {
         return shelterService.updateShelter(id, shelterDetails);
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     public void deleteShelter(@PathVariable Long id) {
         shelterService.deleteShelter(id);
     }
