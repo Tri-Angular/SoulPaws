@@ -1,8 +1,9 @@
 INSERT INTO soulpaws.users (name, age, email, password, province, role)
 VALUES
-('Alice Admin', 35, 'alice.admin@example.com', 'hashedpassword1', 'Ontario', 'ADMIN'),
-('Bob User', 28, 'bob.user@example.com', 'hashedpassword2', 'Quebec', 'USER'),
-('Charlie User', 30, 'charlie.user@example.com', 'hashedpassword3', 'British Columbia', 'USER');
+('Alice Admin', 35, 'admin@admin.com', '$2a$12$FJOBBZVJg5LjVgj3QFZkH.OSTS/dYT2Bf71H7KnlkNb2PU5eIaJ8m', 'Granada', 'ADMIN'),
+('Jose Enrique', 28, 'jose@example.com', 'qwerty123', 'Granada', 'USER'),
+('Carlos Perez', 30, 'carlos.perez@example.com', 'hashedpassword3', 'Madrid', 'USER'),
+('Refugio Felices', 40, 'contacto@refugiofelices.com', '$2a$12$7dyMRUvNH20slWu6bvEL9eVOKsrODIbtE/w2BIvglOk9640sxI57K', 'Granada', 'SHELTER');
 
 INSERT INTO soulpaws.breeds (breed, species)
 VALUES
@@ -41,8 +42,8 @@ VALUES
 
 INSERT INTO soulpaws.shelters (name, phone, email, address, province, postal_code, description)
 VALUES
-('Happy Paws Shelter', '123-456-7890', 'contact@happypaws.com', '1234 Elm St, Toronto', 'Ontario', 'M4B1B3', 'A welcoming place for pets in need.'),
-('Safe Haven Shelter', '234-567-8901', 'info@safehaven.com', '5678 Oak St, Montreal', 'Quebec', 'H1A2B3', 'Providing shelter and care for homeless pets.');
+('Refugio Felices', '123-456-7890', 'contacto@refugiofelices.com', 'Calle Falsa 123, Granada', 'Granada', '18001', 'Un lugar acogedor para mascotas necesitadas.'),
+('Hogar Seguro', '234-567-8901', 'info@hogarseguro.com', 'Avenida Siempreviva 742, Madrid', 'Madrid', '28001', 'Proporcionando refugio y cuidado a mascotas sin hogar.');
 
 INSERT INTO soulpaws.pets (name, age, shelter_id, breed_id, size, gender, image, description, unique_features, availability_status)
 VALUES
