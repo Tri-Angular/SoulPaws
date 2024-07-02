@@ -6,7 +6,6 @@ import { RegisterComponent } from './components/pages/auth/register/register.com
 import { PetDetailComponent } from './components/pages/pets/pet-detail/pet-detail.component';
 import { AboutUsComponent } from './components/pages/about-us/about-us.component';
 
-
 export const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'about', component: AboutUsComponent },
@@ -14,6 +13,6 @@ export const routes: Routes = [
   { path: 'pet-detail/:id', component: PetDetailComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: '', redirectTo: '/pet-list', pathMatch: 'full' },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', redirectTo: '/home' }
 ];
