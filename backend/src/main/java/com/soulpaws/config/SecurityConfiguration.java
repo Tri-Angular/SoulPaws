@@ -36,8 +36,10 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests(authorizeRequests ->
                         authorizeRequests
                                 .requestMatchers("/auth/**").permitAll()
-                                .requestMatchers("/pets/**").permitAll()
-                                .requestMatchers("/adoptions/**").permitAll()
+                                .requestMatchers("/pets/**").authenticated()
+                                .requestMatchers("/adoptions/**").authenticated()
+                                .requestMatchers("/admin/**").hasRole("ADMIN")
+                                .requestMatchers("/shelters/**").hasAnyRole("SHELTER", "ADMIN")
                                 .anyRequest().authenticated())
                 .cors(cors -> cors.configurationSource(corsConfigurationSource()))
                 .authenticationProvider(authenticationProvider)

@@ -7,7 +7,9 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 public class RegisterUserDto {
-    String email;
-    String password;
-    String name;
+    private String email;
+    private String password;
+    private String name;
+    private String province;
+    private int age;
 }

@@ -1,12 +1,11 @@
 package com.soulpaws.auth;
 
+import com.soulpaws.model.Shelter;
 import com.soulpaws.model.User;
 import com.soulpaws.config.JwtService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.web.bind.annotation.*;
 
 @RequestMapping("/auth")
 @RestController
@@ -25,6 +24,12 @@ public class AuthenticationController {
         return ResponseEntity.ok(registeredUser);
     }
 
+    @PostMapping("/signup-shelter")
+    public ResponseEntity<Shelter> registerShelter(@RequestBody RegisterShelterDto registerShelterDto) {
+        Shelter registeredShelter = authenticationService.registerShelter(registerShelterDto);
+        return ResponseEntity.ok(registeredShelter);
+    }
+
     @PostMapping("/login")
     public ResponseEntity<LoginResponse> authenticate(@RequestBody LoginUserDto loginUserDto) {
         User authenticatedUser = authenticationService.authenticate(loginUserDto);
@@ -36,5 +41,11 @@ public class AuthenticationController {
                 .build();
 
         return ResponseEntity.ok(loginResponse);
+    }
+
+    @PostMapping("/logout")
+    public ResponseEntity<Void> logout() {
+        SecurityContextHolder.clearContext();
+        return ResponseEntity.ok().build();
     }
 }
