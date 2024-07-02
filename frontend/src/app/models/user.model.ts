@@ -5,7 +5,7 @@ export interface User {
     email: string;
     password: string;
     province: string;
-    role: 'ADMIN' | 'USER';
+    role: 'ADMIN' | 'USER' | 'SHELTER';
     createdAt: Date;
     updatedAt: Date;
 }
