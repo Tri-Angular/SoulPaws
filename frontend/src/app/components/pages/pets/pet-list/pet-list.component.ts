@@ -5,6 +5,7 @@ import { PetService } from 'src/app/services/api/pet.service';
 import { Pet } from 'src/app/models/pet.model';
 import { PetSearchComponent } from '../pet-search/pet-search.component';
 import { AdoptionRequestService } from 'src/app/services/api/adoption-request.service';
+import { AuthService } from 'src/app/services/api/auth.service';
 
 @Component({
   selector: 'app-pet-list',
@@ -25,7 +26,11 @@ export class PetListComponent implements OnInit {
     age: ''
   };
 
-  constructor(private petService: PetService, private adoptionRequestService: AdoptionRequestService) {}
+  constructor(
+    private petService: PetService,
+    private adoptionRequestService: AdoptionRequestService,
+    private authService: AuthService
+  ) {}
 
   ngOnInit(): void {
     this.petService.getAllPets().subscribe((data: Pet[]) => {
@@ -51,7 +56,7 @@ export class PetListComponent implements OnInit {
       const matchesAge = pet.age >= filterCriteria.minAge && pet.age <= filterCriteria.maxAge;
 
       return matchesSearchText && matchesBreed && matchesGender && matchesSize && matchesAge;
-  });
+    });
     
     if (this.filteredPets.length === 0) {
       this.filteredPets = [...this.pets];
@@ -63,6 +68,35 @@ export class PetListComponent implements OnInit {
       console.log('Adoption request initiated', response);
     }, error => {
       console.error('Error initiating adoption request', error);
+    });
+  }
+
+  isAdmin(): boolean {
+    return this.authService.isAdmin();
+  }
+
+  isShelter(): boolean {
+    return this.authService.isShelter();
+  }
+
+  isUser(): boolean {
+    return this.authService.isUser();
+  }
+
+  isShelterOrAdmin(): boolean {
+    return this.isAdmin() || this.isShelter();
+  }
+
+  isOwner(petOwnerEmail: string): boolean {
+    const currentUser = this.authService.getCurrentUser();
+    return currentUser ? currentUser.email === petOwnerEmail : false;
+  }
+
+  deletePet(id: number): void {
+    this.petService.deletePet(id).subscribe(() => {
+      this.filteredPets = this.filteredPets.filter(pet => pet.id !== id);
+    }, error => {
+      console.error('Error deleting pet', error);
     });
   }
 }
