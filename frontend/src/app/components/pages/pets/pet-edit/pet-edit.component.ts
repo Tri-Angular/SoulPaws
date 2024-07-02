@@ -1,48 +1,76 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { PetService } from '../../../../services/api/pet.service';
-import { Pet } from '../../../../models/pet.model';
+import { CommonModule } from '@angular/common';
+import { PetService } from 'src/app/services/api/pet.service';
+import { Pet } from 'src/app/models/pet.model';
+import { BreedService } from 'src/app/services/api/breed.service';
+import { ShelterService } from 'src/app/services/api/shelter.service';
+import { Breed } from 'src/app/models/breed.model';
+import { Shelter } from 'src/app/models/shelter.model';
 
 @Component({
   selector: 'app-pet-edit',
+  standalone: true,
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './pet-edit.component.html',
   styleUrls: ['./pet-edit.component.css']
 })
 export class PetEditComponent implements OnInit {
-  pet: Pet = {} as Pet;
-  petId!: number; //A TENER ENCUENTA - Usa el operador ! para indicar a TypeScript que confíe en ti y que sabes que petId estará definitivamente definida en el constructor o en la inicialización de la clase.
+  petForm: FormGroup;
+  pet: Pet | undefined;
+  breeds: Breed[] = [];
+  shelters: Shelter[] = [];
+  availabilityStatuses = ['AVAILABLE_FOR_ADOPTION', 'ADOPTED', 'NOT_AVAILABLE'];
 
   constructor(
+    private fb: FormBuilder,
+    private petService: PetService,
+    private breedService: BreedService,
+    private shelterService: ShelterService,
     private route: ActivatedRoute,
-    private router: Router,
-    private petService: PetService
-  ) {}
+    private router: Router
+  ) {
+    this.petForm = this.fb.group({
+      name: ['', Validators.required],
+      age: ['', Validators.required],
+      breed: ['', Validators.required],
+      shelter: ['', Validators.required],
+      size: ['', Validators.required],
+      gender: ['', Validators.required],
+      image: ['', Validators.required],
+      description: ['', Validators.required],
+      unique_features: ['', Validators.required],
+      availability_status: ['', Validators.required]
+    });
+  }
 
   ngOnInit(): void {
-    this.petId = Number(this.route.snapshot.paramMap.get('id')); // Obtener el ID de la mascota desde la URL
-    this.getPetDetails();
+    const id = this.route.snapshot.paramMap.get('id');
+    if (id) {
+      this.petService.getPetById(Number(id)).subscribe((data: Pet) => {
+        this.pet = data;
+        this.petForm.patchValue(this.pet);
+      });
+    }
+
+    this.breedService.getAllBreeds().subscribe((data: Breed[]) => {
+      this.breeds = data;
+    });
+
+    this.shelterService.getAllShelters().subscribe((data: Shelter[]) => {
+      this.shelters = data;
+    });
   }
 
-  getPetDetails(): void {
-    this.petService.getPetById(this.petId).subscribe(
-      (data: Pet) => {
-        this.pet = data; // Asignar los detalles de la mascota obtenidos del servicio
-      },
-      (error) => {
-        console.error('Error al obtener los detalles de la mascota:', error);
+  onSubmit(): void {
+    if (this.petForm.valid) {
+      const petData = this.petForm.value;
+      if (this.pet && this.pet.id) {
+        this.petService.updatePet(this.pet.id, petData).subscribe(() => {
+          this.router.navigate(['/pet-list']);
+        });
       }
-    );
-  }
-
-  updatePet(): void {
-    this.petService.updatePet(this.petId, this.pet).subscribe(
-      () => {
-        console.log('Mascota actualizada correctamente.');
-        this.router.navigate(['/pets']); // Redirigir a la lista de mascotas después de la actualización
-      },
-      (error) => {
-        console.error('Error al actualizar la mascota:', error);
-      }
-    );
+    }
   }
 }

@@ -16,6 +16,8 @@ import { AdoptionRequestService } from 'src/app/services/api/adoption-request.se
 export class PetDetailComponent implements OnInit {
   pet: Pet | undefined;
   isAdmin: boolean = false;
+  isUser: boolean = false;
+  successMessage: string | null = null;
 
   constructor(
     private route: ActivatedRoute,
@@ -34,10 +36,24 @@ export class PetDetailComponent implements OnInit {
     }
 
     this.isAdmin = this.authService.isAdmin();
+    this.isUser = this.authService.isUser();
   }
 
   editPet(): void {
     this.router.navigate(['/edit-pet', this.pet?.id]);
+  }
+
+  deletePet(): void {
+    if (this.pet?.id) {
+      if (confirm('Are you sure you want to delete this pet?')) {
+        this.petService.deletePet(this.pet.id).subscribe(() => {
+          this.successMessage = 'Pet successfully deleted.';
+          setTimeout(() => this.router.navigate(['/pet-list']), 2000);
+        }, error => {
+          console.error('Error deleting pet', error);
+        });
+      }
+    }
   }
 
   initiateAdoption(petId: number): void {

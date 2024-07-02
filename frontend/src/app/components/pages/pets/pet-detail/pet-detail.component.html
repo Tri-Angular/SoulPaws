@@ -22,7 +22,11 @@
             <p><strong>Description:</strong> {{ pet.shelter.description }}</p>
           </div>
           <div *ngIf="isAdmin" class="d-flex justify-content-between mt-3">
-            <button class="btn btn-primary edit-button" (click)="editPet()">Edit Pet</button>
+            <button class="btn btn-warning edit-button" (click)="editPet()">Edit Pet</button>
+            <button class="btn btn-danger delete-button" (click)="deletePet()">Delete Pet</button>
+          </div>
+          <div *ngIf="successMessage" class="alert alert-success mt-3">
+            {{ successMessage }}
           </div>
         </div>
       </div>
@@ -43,7 +47,7 @@
           <span class="visually-hidden">Next</span>
         </button>
       </div>
-      <button class="btn btn-adopt w-100 mt-3" (click)="initiateAdoption(pet.id)">Adopt</button>
+      <button *ngIf="isUser" class="btn btn-adopt w-100 mt-3" (click)="initiateAdoption(pet.id)">Adopt</button>
     </div>
   </div>
 </div>

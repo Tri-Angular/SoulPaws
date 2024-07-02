@@ -1,42 +1,17 @@
-.pet-edit {
-    padding: 20px;
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    margin-bottom: 20px;
-  }
-  
-  .pet-edit h2 {
-    font-size: 24px;
-    margin-bottom: 10px;
-  }
-  
-  .pet-edit form {
-    display: flex;
-    flex-direction: column;
-    max-width: 400px;
-  }
-  
-  .pet-edit label {
-    margin-bottom: 5px;
-  }
-  
-  .pet-edit input,
-  .pet-edit select,
-  .pet-edit textarea {
-    margin-bottom: 10px;
-    padding: 8px;
-    font-size: 16px;
-  }
-  
-  .pet-edit button {
-    padding: 10px 20px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .pet-edit button:hover {
-    background-color: #45a049;
-  }
-  
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+button {
+  width: 100%;
+}
+.btn-primary {
+  margin-top: 15px;
+  background-color: #fbaa53;
+  border-color: #fbaa53;
+}
