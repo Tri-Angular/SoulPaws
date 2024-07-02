@@ -2,6 +2,7 @@ package com.soulpaws.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -36,9 +37,15 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests(authorizeRequests ->
                         authorizeRequests
                                 .requestMatchers("/auth/**").permitAll()
-                                .requestMatchers("/pets/**").authenticated()
+                                .requestMatchers(HttpMethod.GET, "/pets/**").permitAll()
+                                .requestMatchers(HttpMethod.POST, "/pets/**").hasAnyRole("SHELTER", "ADMIN")
+                                .requestMatchers(HttpMethod.PUT, "/pets/**").hasAnyRole("SHELTER", "ADMIN")
+                                .requestMatchers(HttpMethod.DELETE, "/pets/**").hasAnyRole("SHELTER", "ADMIN")
                                 .requestMatchers("/adoptions/**").authenticated()
                                 .requestMatchers("/admin/**").hasRole("ADMIN")
+                                .requestMatchers(HttpMethod.GET, "/breeds/**").permitAll()
+                                .requestMatchers(HttpMethod.GET, "/shelters/**").permitAll()
+                                .requestMatchers("/breeds/**").hasAnyRole("SHELTER", "ADMIN")
                                 .requestMatchers("/shelters/**").hasAnyRole("SHELTER", "ADMIN")
                                 .anyRequest().authenticated())
                 .cors(cors -> cors.configurationSource(corsConfigurationSource()))
