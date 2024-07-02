@@ -4,9 +4,9 @@ import com.soulpaws.model.Pet;
 import com.soulpaws.model.Shelter;
 import com.soulpaws.model.Breed;
 import com.soulpaws.repository.PetRepository;
-import com.soulpaws.service.ShelterService;
-import com.soulpaws.service.BreedService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -33,7 +33,6 @@ public class PetService {
     }
 
     public Pet createPet(Pet pet) {
-        // Загрузка объектов shelter и breed по их идентификаторам
         if (pet.getShelter() != null && pet.getShelter().getId() != null) {
             Optional<Shelter> shelter = shelterService.findById(pet.getShelter().getId());
             shelter.ifPresent(pet::setShelter);
@@ -50,22 +49,37 @@ public class PetService {
     public Pet updatePet(Long id, Pet petDetails) {
         Pet pet = petRepository.findById(id).orElse(null);
         if (pet != null) {
-            pet.setName(petDetails.getName());
-            pet.setAge(petDetails.getAge());
-            pet.setBreed(petDetails.getBreed());
-            pet.setShelter(petDetails.getShelter());
-            pet.setSize(petDetails.getSize());
-            pet.setGender(petDetails.getGender());
-            pet.setImage(petDetails.getImage());
-            pet.setDescription(petDetails.getDescription());
-            pet.setUniqueFeatures(petDetails.getUniqueFeatures());
-            pet.setAvailabilityStatus(petDetails.getAvailabilityStatus());
-            return petRepository.save(pet);
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+            String currentUsername = authentication.getName();
+
+            if (pet.getShelter().getEmail().equals(currentUsername) || authentication.getAuthorities().stream()
+                    .anyMatch(role -> role.getAuthority().equals("ROLE_ADMIN"))) {
+                pet.setName(petDetails.getName());
+                pet.setAge(petDetails.getAge());
+                pet.setBreed(petDetails.getBreed());
+                pet.setShelter(petDetails.getShelter());
+                pet.setSize(petDetails.getSize());
+                pet.setGender(petDetails.getGender());
+                pet.setImage(petDetails.getImage());
+                pet.setDescription(petDetails.getDescription());
+                pet.setUniqueFeatures(petDetails.getUniqueFeatures());
+                pet.setAvailabilityStatus(petDetails.getAvailabilityStatus());
+                return petRepository.save(pet);
+            }
         }
         return null;
     }
 
     public void deletePet(Long id) {
-        petRepository.deleteById(id);
+        Pet pet = petRepository.findById(id).orElse(null);
+        if (pet != null) {
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+            String currentUsername = authentication.getName();
+
+            if (pet.getShelter().getEmail().equals(currentUsername) || authentication.getAuthorities().stream()
+                    .anyMatch(role -> role.getAuthority().equals("ROLE_ADMIN"))) {
+                petRepository.deleteById(id);
+            }
+        }
     }
 }
