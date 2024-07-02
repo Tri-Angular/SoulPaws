@@ -5,9 +5,9 @@
         <img src="assets/logo.png" alt="Logo" class="logo">
       </div>
       <div class="col-md-6 text-end">
-        <button *ngIf="!isLoggedIn()" class="btn btn-custom me-2" (click)="login()">Login</button>
-        <button *ngIf="!isLoggedIn()" class="btn btn-custom" (click)="register()">Register</button>
-        <button *ngIf="isLoggedIn()" class="btn btn-custom" (click)="logout()">Logout</button>
+        <button class="btn btn-custom me-2" *ngIf="!isLoggedIn()" (click)="login()">Login</button>
+        <button class="btn btn-custom" *ngIf="!isLoggedIn()" (click)="register()">Register</button>
+        <button class="btn btn-custom" *ngIf="isLoggedIn()" (click)="logout()">Logout</button>
       </div>
     </div>
   </div>
