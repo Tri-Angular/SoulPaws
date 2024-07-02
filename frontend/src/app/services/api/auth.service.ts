@@ -10,11 +10,19 @@ export class AuthService {
   private apiUrl = 'http://localhost:8005/auth';
   private currentUser: any = null;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    const storedUser = localStorage.getItem('currentUser');
+    if (storedUser) {
+      this.currentUser = JSON.parse(storedUser);
+    }
+  }
 
   login(credentials: any): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/login`, credentials).pipe(
-      tap(user => this.currentUser = user)
+      tap(user => {
+        this.currentUser = user;
+        localStorage.setItem('currentUser', JSON.stringify(user));
+      })
     );
   }
 
@@ -22,8 +30,17 @@ export class AuthService {
     return this.http.post<any>(`${this.apiUrl}/signup`, user);
   }
 
+  logout(): void {
+    this.currentUser = null;
+    localStorage.removeItem('currentUser');
+  }
+
   getCurrentUser(): any {
     return this.currentUser;
+  }
+
+  isLoggedIn(): boolean {
+    return !!this.currentUser;
   }
 
   isAdmin(): boolean {
