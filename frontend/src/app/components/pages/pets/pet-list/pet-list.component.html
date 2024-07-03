@@ -10,7 +10,7 @@
         <div class="card-body d-flex flex-column">
           <h5 class="card-title">{{ pet.name }}</h5>
           <p class="card-text"><small class="text-muted">🇪🇸 {{ pet.shelter.province }}</small></p>
-          <div class="mt-auto d-flex justify-content-between buttons-container">
+          <div class="mt-auto d-flex justify-content-center buttons-container">
             <a [routerLink]="['/pet-detail', pet.id]" class="btn btn-primary">Details</a>
             <button *ngIf="isUser()" class="btn btn-adopt" (click)="initiateAdoption(pet.id)">Adopt</button>
           </div>
