@@ -6,6 +6,7 @@ import { Pet } from 'src/app/models/pet.model';
 import { AuthService } from 'src/app/services/api/auth.service';
 import { AdoptionRequestService } from 'src/app/services/api/adoption-request.service';
 import { AdoptionRequest } from 'src/app/models/adoption-request.model';
+import { Observable, catchError, map, of, switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-pet-detail',
@@ -58,35 +59,54 @@ export class PetDetailComponent implements OnInit {
     }
   }
 
+  checkExistingAdoptionRequest(userId: number, petId: number): Observable<boolean> {
+    return this.adoptionRequestService.getAllAdoptionRequests().pipe(
+      map(requests => requests.some((request: AdoptionRequest) => request.user.id === userId && request.pet.id === petId)),
+      catchError(() => of(false))
+    );
+  }
+
   initiateAdoption(petId: number): void {
     const currentUser = this.authService.getCurrentUser();
     if (currentUser) {
-      const adoptionRequest: AdoptionRequest = {
-        user: { id: currentUser.id },
-        pet: { id: petId },
-        status: 'PENDING'
-      };
-      this.adoptionRequestService.createAdoptionRequest(adoptionRequest).subscribe(
+
+      this.checkExistingAdoptionRequest(currentUser.id, petId).pipe(
+        switchMap(exists => {
+          if (exists) {
+            this.errorMessage = 'You have already submitted an adoption request for this pet.';
+            this.successMessage = null;
+            setTimeout(() => this.errorMessage = null, 3000);
+            return of(null);
+          } else {
+            const adoptionRequest: AdoptionRequest = {
+              user: { id: currentUser.id },
+              pet: { id: petId },
+              status: 'PENDING'
+            };
+            return this.adoptionRequestService.createAdoptionRequest(adoptionRequest);
+          }
+        })
+      ).subscribe(
         response => {
-          console.log('Adoption request initiated', response);
-          this.successMessage = 'Adoption request successfully created!';
-          this.errorMessage = null;
+          if (response) {
+            console.log('Adoption request initiated', response);
+            this.successMessage = 'Adoption request successfully created!';
+            this.errorMessage = null;
+            setTimeout(() => this.successMessage = null, 3000);
+          }
         },
         error => {
           console.error('Error initiating adoption request', error);
-          if (error.error instanceof ErrorEvent) {
-            console.error('Client-side error:', error.error.message);
-          } else {
-            console.error(`Server-side error: ${error.status} - ${error.message}`);
-          }
           this.errorMessage = 'Failed to create adoption request. Please try again later.';
           this.successMessage = null;
+          setTimeout(() => this.errorMessage = null, 3000);
         }
       );
     } else {
       console.error('User is not authenticated');
       this.errorMessage = 'You must be logged in to adopt a pet.';
       this.successMessage = null;
-    }
+      setTimeout(() => this.errorMessage = null, 3000);
   }
+}
 }
