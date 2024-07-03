@@ -7,6 +7,7 @@ import { PetDetailComponent } from './components/pages/pets/pet-detail/pet-detai
 import { AboutUsComponent } from './components/pages/about-us/about-us.component';
 import { PetEditComponent } from './components/pages/pets/pet-edit/pet-edit.component';
 import { PetAddComponent } from './components/pages/pets/pet-add/pet-add.component';
+import { AdoptionRequestComponent } from './components/pages/adoption-request/adoption-request.component';
 
 export const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -17,6 +18,7 @@ export const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'add-pet', component: PetAddComponent },
+  { path: 'adoption-request', component: AdoptionRequestComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', redirectTo: '/home' }
 ];
