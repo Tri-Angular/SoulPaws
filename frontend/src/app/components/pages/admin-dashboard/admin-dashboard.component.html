@@ -1,0 +1,98 @@
+<div class="container mt-4">
+  <div class="card-header text-center">
+    <h2>Admin Dashboard</h2>
+  </div>
+
+  <h3>Users</h3>
+  <div class="table-responsive">
+    <table class="table table-bordered">
+      <thead class="thead-light">
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users">
+          <td><input [(ngModel)]="user.name" name="userName{{user.id}}" class="form-control"></td>
+          <td><input [(ngModel)]="user.email" name="userEmail{{user.id}}" class="form-control"></td>
+          <td>
+            <button (click)="updateUser(user.id, user)" class="btn btn-success">Update</button>
+            <button (click)="deleteUser(user.id)" class="btn btn-danger mx-2">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Shelters</h3>
+  <form (ngSubmit)="createShelter()" class="mb-4">
+    <div class="form-group">
+      <input type="text" class="form-control" [(ngModel)]="newShelter.name" name="newShelterName" placeholder="Name" required>
+    </div>
+    <div class="form-group">
+      <input type="text" class="form-control" [(ngModel)]="newShelter.province" name="newShelterProvince" placeholder="Province" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Add Shelter</button>
+  </form>
+  <div class="table-responsive">
+    <table class="table table-bordered">
+      <thead class="thead-light">
+        <tr>
+          <th>Name</th>
+          <th>Province</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let shelter of shelters">
+          <td><input [(ngModel)]="shelter.name" name="shelterName{{shelter.id}}" class="form-control"></td>
+          <td><input [(ngModel)]="shelter.province" name="shelterProvince{{shelter.id}}" class="form-control"></td>
+          <td>
+            <button (click)="updateShelter(shelter.id, shelter)" class="btn btn-success">Update</button>
+            <button (click)="deleteShelter(shelter.id)" class="btn btn-danger mx-2">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Adoption Requests</h3>
+  <div class="table-responsive">
+    <table class="table table-bordered">
+      <thead class="thead-light">
+        <tr>
+          <th>User</th>
+          <th>Pet</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let request of adoptionRequests">
+          <td>{{ request.user.name }}</td>
+          <td>{{ request.pet.name }}</td>
+          <td>
+            <select [(ngModel)]="request.status" name="requestStatus{{request.id}}" class="form-control">
+              <option value="Pending">Pending</option>
+              <option value="Approved">Approved</option>
+              <option value="Rejected">Rejected</option>
+            </select>
+          </td>
+          <td>
+            <button (click)="updateAdoptionRequest(request.id, { status: request.status })" class="btn btn-success">Update</button>
+            <button (click)="deleteAdoptionRequest(request.id)" class="btn btn-danger mx-2">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="errorMessage" class="alert alert-danger mt-3">
+    {{ errorMessage }}
+  </div>
+  <div *ngIf="successMessage" class="alert alert-success mt-3">
+    {{ successMessage }}
+  </div>
+</div>
