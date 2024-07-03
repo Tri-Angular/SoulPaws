@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { AdoptionRequest } from 'src/app/models/adoption-request.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AdoptionRequestService {
-  private apiUrl = 'http://localhost:8080/api/adoption-requests';
+  private apiUrl = 'http://localhost:8005/adoptions';
 
   constructor(private http: HttpClient) {}
 
@@ -18,7 +19,8 @@ export class AdoptionRequestService {
     return this.http.get<any>(`${this.apiUrl}/${id}`);
   }
 
-  createAdoptionRequest(adoptionRequest: any): Observable<any> {
+  createAdoptionRequest(adoptionRequest: AdoptionRequest): Observable<any> {
+    console.log('AdoptionRequest:', adoptionRequest);
     return this.http.post<any>(this.apiUrl, adoptionRequest);
   }
 

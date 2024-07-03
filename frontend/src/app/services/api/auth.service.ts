@@ -3,7 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { User } from 'src/app/models/user.model';
-
 @Injectable({
   providedIn: 'root'
 })
@@ -17,8 +16,9 @@ export class AuthService {
       tap(response => {
         if (response && response.token && response.role) {
           const user: User = {
-            ...response,
+            id: response.id,
             email: credentials.email,
+            role: response.role,
             token: response.token
           };
           console.log('Login response user:', user);
@@ -41,6 +41,11 @@ export class AuthService {
   getCurrentUser(): User | null {
     const storedUser = localStorage.getItem('currentUser');
     return storedUser ? JSON.parse(storedUser) : null;
+  }
+
+  getToken(): string | null {
+    const currentUser = this.getCurrentUser();
+    return currentUser ? currentUser.token : null;
   }
 
   isLoggedIn(): boolean {
