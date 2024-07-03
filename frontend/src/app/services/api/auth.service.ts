@@ -43,6 +43,10 @@ export class AuthService {
     return storedUser ? JSON.parse(storedUser) : null;
   }
 
+  updateUser(user: User): Observable<User> {
+    return this.http.put<User>(`${this.apiUrl}/users/${user.id}`, user);
+  }  
+
   getToken(): string | null {
     const currentUser = this.getCurrentUser();
     return currentUser ? currentUser.token : null;

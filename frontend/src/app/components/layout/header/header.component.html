@@ -8,6 +8,8 @@
         <button class="btn btn-custom me-2" *ngIf="!isLoggedIn()" (click)="login()">Login</button>
         <button class="btn btn-custom" *ngIf="!isLoggedIn()" (click)="register()">Register</button>
         <button class="btn btn-custom" *ngIf="isLoggedIn()" (click)="logout()">Logout</button>
+        <button class="btn btn-custom ms-2" *ngIf="isUser()" [routerLink]="['/profile']">My Account</button>
+        <button class="btn btn-custom ms-2" *ngIf="isAdmin()" [routerLink]="['/admin']">Admin Panel</button>
       </div>
     </div>
   </div>

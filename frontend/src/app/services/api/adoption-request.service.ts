@@ -43,4 +43,9 @@ export class AdoptionRequestService {
   pendingRequest(id: number): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/${id}/pending`, {});
   }
+
+  getAdoptionRequestsByUserId(userId: number): Observable<AdoptionRequest[]> {
+    return this.http.get<AdoptionRequest[]>(`${this.apiUrl}/user/${userId}`);
+  }
+
 }

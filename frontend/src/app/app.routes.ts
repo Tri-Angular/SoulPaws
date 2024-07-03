@@ -8,6 +8,8 @@ import { AboutUsComponent } from './components/pages/about-us/about-us.component
 import { PetEditComponent } from './components/pages/pets/pet-edit/pet-edit.component';
 import { PetAddComponent } from './components/pages/pets/pet-add/pet-add.component';
 import { AdoptionRequestComponent } from './components/pages/adoption-request/adoption-request.component';
+import { AdminDashboardComponent } from './components/pages/admin-dashboard/admin-dashboard.component';
+import { UserProfileComponent } from './components/pages/users/user-profile/user-profile.component';
 
 export const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -17,6 +19,8 @@ export const routes: Routes = [
   { path: 'edit-pet/:id', component: PetEditComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
+  { path: 'admin', component: AdminDashboardComponent },
+  { path: 'profile', component: UserProfileComponent },
   { path: 'add-pet', component: PetAddComponent },
   { path: 'adoption-request', component: AdoptionRequestComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
