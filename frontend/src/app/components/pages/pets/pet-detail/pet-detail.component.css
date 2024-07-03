@@ -43,13 +43,15 @@
 .btn-adopt {
   background-color: #fbaa53 !important;
   border-color: #fbaa53 !important;
-  color: white !important;
+  font-weight: bold;
+  color: #7b000a !important;
 }
 
 .btn-adopt:hover {
   background-color: #e09b48 !important;
   border-color: #e09b48 !important;
-  color: white !important;
+  font-weight: bold;
+  color: #7b000a !important;
 }
 
 .d-flex {

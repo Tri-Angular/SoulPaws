@@ -1,5 +1,7 @@
 <div class="container mt-4">
-  <h2>Edit Pet</h2>
+  <div class="card-header text-center">
+    <h2>Edit Pet</h2>
+  </div>
   <form [formGroup]="petForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
       <label for="name">Name</label>
@@ -54,5 +56,8 @@
   </form>
   <div *ngIf="errorMessage" class="alert alert-danger mt-3">
     {{ errorMessage }}
+  </div>
+  <div *ngIf="successMessage" class="alert alert-success mt-3">
+    {{ successMessage }}
   </div>
 </div>

@@ -23,6 +23,7 @@ export class PetEditComponent implements OnInit {
   shelters: Shelter[] = [];
   availabilityStatuses = ['AVAILABLE_FOR_ADOPTION', 'ADOPTED', 'NOT_AVAILABLE'];
   errorMessage: string | null = null;
+  successMessage: string | null = null;
 
   constructor(
     private fb: FormBuilder,
@@ -84,7 +85,10 @@ export class PetEditComponent implements OnInit {
       };
       if (this.pet && this.pet.id) {
         this.petService.updatePet(this.pet.id, petData).subscribe(() => {
-          this.router.navigate(['/pet-list']);
+          this.successMessage = 'Successfully edited';
+          setTimeout(() => {
+            this.router.navigate(['/pet-detail', this.pet?.id]);
+          }, 2000);
         }, error => {
           console.error('Error updating pet', error);
           this.errorMessage = 'Error updating pet';
