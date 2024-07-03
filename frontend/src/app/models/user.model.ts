@@ -6,6 +6,7 @@ export interface User {
     password: string;
     province: string;
     role: 'ADMIN' | 'USER' | 'SHELTER';
+    token: string; 
     createdAt: Date;
     updatedAt: Date;
 }

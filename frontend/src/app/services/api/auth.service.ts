@@ -18,7 +18,8 @@ export class AuthService {
         if (response && response.token && response.role) {
           const user: User = {
             ...response,
-            email: credentials.email 
+            email: credentials.email,
+            token: response.token
           };
           console.log('Login response user:', user);
           localStorage.setItem('currentUser', JSON.stringify(user));

@@ -45,7 +45,7 @@ export class HeaderComponent {
 
   getCurrentUser(): any {
     const user = this.authService.getCurrentUser();
-    console.log('Header current user:', user); // Логирование текущего пользователя в header
+    console.log('Header current user:', user);
     return user;
   }
 }
