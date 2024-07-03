@@ -6,6 +6,7 @@ import { RegisterComponent } from './components/pages/auth/register/register.com
 import { PetDetailComponent } from './components/pages/pets/pet-detail/pet-detail.component';
 import { AboutUsComponent } from './components/pages/about-us/about-us.component';
 import { PetEditComponent } from './components/pages/pets/pet-edit/pet-edit.component';
+import { PetAddComponent } from './components/pages/pets/pet-add/pet-add.component';
 
 export const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -15,6 +16,7 @@ export const routes: Routes = [
   { path: 'edit-pet/:id', component: PetEditComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
+  { path: 'add-pet', component: PetAddComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', redirectTo: '/home' }
 ];
