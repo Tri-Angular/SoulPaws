@@ -48,6 +48,7 @@ export class PetListComponent implements OnInit {
         pet.name.toLowerCase().includes(searchText) ||
         pet.breed.breed.toLowerCase().includes(searchText) ||
         pet.gender.toLowerCase().includes(searchText) ||
+        pet.shelter.province.toLowerCase().includes(searchText) ||
         pet.size.toLowerCase().includes(searchText);
 
       const matchesBreed = filterCriteria.breed === '' || pet.breed.id === +filterCriteria.breed;
@@ -90,13 +91,5 @@ export class PetListComponent implements OnInit {
   isOwner(petOwnerEmail: string): boolean {
     const currentUser = this.authService.getCurrentUser();
     return currentUser ? currentUser.email === petOwnerEmail : false;
-  }
-
-  deletePet(id: number): void {
-    this.petService.deletePet(id).subscribe(() => {
-      this.filteredPets = this.filteredPets.filter(pet => pet.id !== id);
-    }, error => {
-      console.error('Error deleting pet', error);
-    });
   }
 }

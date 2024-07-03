@@ -45,23 +45,28 @@
 
 .btn-primary {
   background-color: #fbaa53;
+  color: #7b000a;
+  font-weight: bold;
   border: none;
 }
 
 .btn-primary:hover {
   background-color: #e09b48;
+  color: #7b000a;
 }
 
 .btn-adopt {
   background-color: #7b000a !important;
   border-color: #7b000a !important;
-  color: white !important;
+  color: #fbaa53 !important;
+  font-weight: bold;
 }
 
 .btn-adopt:hover {
   background-color: #ad0916 !important;
   border-color: #ad0916 !important;
-  color: white !important;
+  color: #fbaa53 !important;
+  font-weight: bold;
 }
 
 .d-flex {
